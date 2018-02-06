@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_android"
+        android:enabled="true"
+        android:icon="@drawable/icon_android"
+        android:title="Android"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_ios"
+        android:enabled="true"
+        android:icon="@drawable/icon_android"
+        android:title="iOS"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_girl"
+        android:enabled="true"
+        android:icon="@drawable/icon_android"
+        android:title="妹子"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_about"
+        android:enabled="true"
+        android:icon="@drawable/icon_android"
+        android:title="关于"
+        app:showAsAction="ifRoom" />
+
+</menu>

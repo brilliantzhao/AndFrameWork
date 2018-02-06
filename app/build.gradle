@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+//===
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions' // 快捷的findviewByid操作
+apply plugin: 'kotlin-kapt' // 让kotlin与databinding合谐并存
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationFrameId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+}
+
+// 解决Kotlin和DataBinding冲突
+kapt {
+    generateStubs = true
+}
+
+dependencies {
+    def dependencies = rootProject.ext.dependencies
+    //################## 系统级
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    //################## 引入第三方jar包
+    //################## git上第三方库
+    //=== dagger
+    compile dependencies.dagger
+    kapt dependencies.daggerCompiler
+    //=== kotlin
+    compile dependencies.kotlinStdlib
+    compile dependencies.kotlinReflect
+    //=== databinding
+    kapt 'com.android.databinding:compiler:3.0.1'
+    //################## 引用第三方工程
+    implementation project(':baselibrary')
+}
