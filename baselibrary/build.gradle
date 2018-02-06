@@ -2,6 +2,14 @@ apply plugin: 'com.android.library'
 //===
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions' // 快捷的findviewByid操作
+/**
+ *
+ 以 Dagger、 Butterknife、 Data Binding、 Auto-parcel 以及 DBFlow 为例（其它框架配置基本类似）。
+ 以上框架均基于注解处理方式工作：通过对代码注解自动生成模板代码。 注解有助于减少冗余代码，让代码清晰可读，
+ 想要了解运行时的代码，可以直接阅读自动生成的源代码。 但所有生成的代码均为 Java 代码而非 Kotlin。
+ 在 Kotlin 中添加依赖与 Java 中类似，仅需要使用 Kotlin 注解处理工具（Kotlin Annotation processing tool，kapt）
+ 替代 annotationProcessor 即可
+ */
 apply plugin: 'kotlin-kapt' // 让kotlin与databinding合谐并存
 
 android {
@@ -36,43 +44,58 @@ kapt {
 }
 
 dependencies {
+    /**
+     * compile,implementation和api的区别
+     * 1. 在com.android.tools.build:gradle 3.0以下版本使用compile，3.0及以后版本使用implementation或api
+     * 2. api指令完全等同于compile指令，没区别，你将所有的compile改成api，完全没有错
+     * 3. implementation指令的特点就是，对于使用了该命令编译的依赖，对该项目有依赖的项目将无法访问到使用该命令
+     *    编译的依赖中的任何程序，也就是将该依赖隐藏在内部，而不对外部公开，用implement指令编译依赖对app Module 是不可见的
+     * 建议：依赖首先应该设置为implement的，如果没有错，那就用implement，如果有错，那么使用api指令，这样会使编译速度有所增快
+     */
     def dependencies = rootProject.ext.dependencies
     //################## 系统级
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compile dependencies.supportDesign
-    compile dependencies.supportRecyclerview
-    compile dependencies.supportCardView
-    compile dependencies.supportMultidex
+    implementation dependencies.appcompatV7
+    implementation dependencies.constraintLayout
+    testImplementation dependencies.junit
+    androidTestImplementation dependencies.runner
+    androidTestImplementation dependencies.espressoCore
+    compile dependencies.design
+    compile dependencies.recyclerview
+    compile dependencies.cardviewV7
+    compile dependencies.multidex
     //################## 引入第三方jar包
     //################## git上第三方库
+    //===
     compile dependencies.rxJava
     compile dependencies.rxAndroid
+    //===
     compile dependencies.gson
+    //===
     compile dependencies.retrofit
     compile dependencies.retrofitRxjavaAdapter
     compile dependencies.retrofitGsonConverter
+    //===
     compile dependencies.okhttp3
     compile dependencies.okhttpLoggingInterceptor
+    //===
     compile dependencies.glide
     //=== dagger
     compile dependencies.dagger
     kapt dependencies.daggerCompiler
-    //===
+    //=== javaxAnnotation
+    // provided代表编译时需要的依赖，Dagger的编译器生成依赖关系的代码，并在编译时添加到IDE 的class path中，
+    // 只参与编译，并不会打包到最终的apk中
     provided dependencies.javaxAnnotation
     //=== kotlin
     compile dependencies.kotlinStdlib
     compile dependencies.kotlinReflect
-    //=== deep link
-    compile 'com.airbnb:deeplinkdispatch:2.0.1'
-    kapt 'com.airbnb:deeplinkdispatch-processor:2.0.1'
-    //===
-    compile 'com.github.githubwing:ByeBurger:1.2.2'
-    //===
-    kapt 'com.android.databinding:compiler:3.0.1'
+    //=== deeplinkdispatch
+    compile dependencies.deeplinkdispatch
+    kapt dependencies.deeplinkdispatchProcessor
+    //=== ByeBurger
+    compile dependencies.ByeBurger
+    //=== 让kotlin与databinding合谐并存
+    kapt dependencies.databinding
     //################## 引用第三方工程
 }
