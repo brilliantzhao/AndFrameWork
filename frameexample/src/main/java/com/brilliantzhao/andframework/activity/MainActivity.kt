@@ -64,7 +64,6 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(), RandomContract.
         floatingButton.setOnClickListener {
             mPresenter.getRandom("Android")
         }
-
     }
 
     override fun onRandom(goods: FuckGoods) {

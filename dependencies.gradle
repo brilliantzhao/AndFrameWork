@@ -37,8 +37,8 @@ ext {
             kotlinReflect            : "org.jetbrains.kotlin:kotlin-reflect:1.2.21",
 
             //=== deeplinkdispatch 根据data跳转不同的页面 (https://github.com/airbnb/DeepLinkDispatch)
-            deeplinkdispatch         : "com.airbnb:deeplinkdispatch:3.1.1",
-            deeplinkdispatchProcessor: "com.airbnb:deeplinkdispatch-processor:3.1.1",
+            deeplinkdispatch         : "com.airbnb:deeplinkdispatch:2.0.1",
+            deeplinkdispatchProcessor: "com.airbnb:deeplinkdispatch-processor:2.0.1",
 
             //=== Dagger2 Google的依赖注入框架 (https://github.com/google/dagger)
             daggerCompiler           : "com.google.dagger:dagger-compiler:2.14.1",

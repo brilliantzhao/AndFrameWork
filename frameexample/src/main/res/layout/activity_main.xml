@@ -33,7 +33,7 @@
             android:layout_gravity="bottom|right"
             android:layout_marginBottom="70dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/icon_android"
+            android:src="@mipmap/icon_android"
             app:backgroundTint="@color/colorPrimary"
             app:layout_behavior="@string/bye_burger_float_behavior" />
     </android.support.design.widget.CoordinatorLayout>
