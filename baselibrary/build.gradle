@@ -13,13 +13,19 @@ apply plugin: 'kotlin-android-extensions' // 快捷的findviewByid操作
 apply plugin: 'kotlin-kapt' // 让kotlin与databinding合谐并存
 
 android {
+    // 编译的SDK版本
     compileSdkVersion rootProject.ext.android.compileSdkVersion
 
+    // 默认配置
     defaultConfig {
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode 1
         versionName "1.0"
+
+        // gradle.properties中配置项
+        resValue("string", 'APP_IS_SHOW_LOG', APP_IS_SHOW_LOG)
+        resValue("string", 'APP_IS_ONLINE_VERSION', APP_IS_ONLINE_VERSION)
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -27,6 +33,11 @@ android {
 
     buildTypes {
         release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        dev {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -45,13 +56,30 @@ kapt {
 
 dependencies {
     /**
-     * compile,implementation和api的区别
-     * 1. 在com.android.tools.build:gradle 3.0以下版本使用compile，3.0及以后版本使用implementation或api
-     * 2. api指令完全等同于compile指令，没区别，你将所有的compile改成api，完全没有错
-     * 3. implementation指令的特点就是，对于使用了该命令编译的依赖，对该项目有依赖的项目将无法访问到使用该命令
-     *    编译的依赖中的任何程序，也就是将该依赖隐藏在内部，而不对外部公开，用implement指令编译依赖对app Module 是不可见的
-     * 建议：依赖首先应该设置为implement的，如果没有错，那就用implement，如果有错，那么使用api指令，这样会使编译速度有所增快
+     *
+     compile,implementation和api的区别
+     1. 在com.android.tools.build:gradle 3.0以下版本使用compile，3.0及以后版本使用implementation或api
+     2. api指令完全等同于compile指令，没区别，你将所有的compile改成api，完全没有错
+     3. implementation指令的特点就是，对于使用了该命令编译的依赖，对该项目有依赖的项目将无法访问到使用该命令
+     编译的依赖中的任何程序，也就是将该依赖隐藏在内部，而不对外部公开，用implement指令编译依赖对app Module 是不可见的
+     建议：依赖首先应该设置为implement的，如果没有错，那就用implement，如果有错，那么使用api指令，这样会使编译速度有所增快
      */
+
+    /**
+     *
+     v4包与V7及V13包的区别
+     1.android-support-v4 是谷歌推出的兼容包，最低兼容Android1.6的系统，里面有类似ViewPager等控件。
+     ViewPager在Android 1.6以下的版本是不自带的，所以要实现ViewPager需要使用v4包中的ViewPager。其余控件类似。
+     2.android-support-v7是谷歌推出的版本兼容包，最低兼容Android2.1的系统，这个包通常和appcompat-v7这个工程一起使用。
+     appcompat-v7这个工程可以让开发者统一开发，在任何系统版本下保证兼容性。涉及的内容有Theme，value，布局，新的控件，
+     新的动画实现方式，包含了support-v4的全部内容，开发Android工程时，要兼容低版本都要导入v7工程。
+     android studio在创建工程的时候默认导入了v7工程，并且将style使用了兼容style，给开发者提供了极大的方便。
+     并且最新的v7包增加了很多material design的兼容类和素材，请及时更新。
+     3.android-support-v13是谷歌推出的版本兼容包，最低兼容Android3.2的系统。当初是为了开发平板做设计的。
+     Android 3.x系统都是平板专用系统，但是3.x系统失败了。所以使用v13的包没有任何价值。
+     v7版本适用于任何版本的开发，保证了兼容性，所以在使用的时候一定要采用，即 com.android.support:appcompat-v7
+     */
+
     def dependencies = rootProject.ext.dependencies
     //################## 系统级
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -66,19 +94,19 @@ dependencies {
     compile dependencies.multidex
     //################## 引入第三方jar包
     //################## git上第三方库
-    //===
+    //=== RX
     compile dependencies.rxJava
     compile dependencies.rxAndroid
-    //===
+    //=== gson
     compile dependencies.gson
-    //===
+    //=== retrofit
     compile dependencies.retrofit
     compile dependencies.retrofitRxjavaAdapter
     compile dependencies.retrofitGsonConverter
-    //===
+    //=== okhttp3
     compile dependencies.okhttp3
     compile dependencies.okhttpLoggingInterceptor
-    //===
+    //=== glide
     compile dependencies.glide
     //=== dagger
     compile dependencies.dagger
@@ -88,6 +116,8 @@ dependencies {
     // 只参与编译，并不会打包到最终的apk中
     provided dependencies.javaxAnnotation
     //=== kotlin
+    // Kotlin 1.2的标准库与新引入的Java 9模块系统兼容，该系统禁止拆分包(多个.jar文件在同一包中声明类)的。
+    // 在Kotlin 1.2中，kotlin-stdlib-jdk7和kotlin-stdlib-jdk8工件取代了旧的kotlin-stdlib-jre7和kotlin-stdlib-jre8
     compile dependencies.kotlinStdlib
     compile dependencies.kotlinReflect
     //=== deeplinkdispatch
@@ -97,5 +127,18 @@ dependencies {
     compile dependencies.ByeBurger
     //=== 让kotlin与databinding合谐并存
     kapt dependencies.databinding
+    //=== hawk
+    compile dependencies.hawk
+    //=== AndroidUtilCode
+    compile dependencies.utilcode
+    //=== SuperTextView
+    compile dependencies.superTextView
+    //=== stetho
+    compile dependencies.stetho
+    compile dependencies.stethoOkhttp3
+    //=== eventbus
+    compile dependencies.eventbus
+    //=== rxpermissions
+    compile dependencies.rxpermissions
     //################## 引用第三方工程
 }

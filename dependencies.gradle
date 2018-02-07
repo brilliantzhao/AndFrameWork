@@ -69,8 +69,8 @@ ext {
             //=== bga-adapter
             bgaAdapter               : "cn.bingoogolapple:bga-baseadapter:1.2.7@aar",
 
-            //=== easypermissions (https://github.com/googlesamples/easypermissions)
-            easypermissions          : "pub.devrel:easypermissions:1.1.1",
+            //=== RxPermissions 基于RxJava的RxPermissions (https://github.com/tbruyelle/RxPermissions)
+            rxpermissions            : "com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar",
 
             //=== picasso (https://github.com/square/picasso)
             picasso                  : "com.squareup.picasso:picasso:2.5.2",
@@ -92,7 +92,7 @@ ext {
             stethoJsRhino            : "com.facebook.stetho:stetho-js-rhino:1.5.0",
 
             //=== SuperTextView (https://github.com/lygttpod/SuperTextView) 满足日常大部分布局样式
-            SuperTextView            : "com.github.lygttpod:SuperTextView:2.1.5",
+            superTextView            : "com.github.lygttpod:SuperTextView:2.1.5",
 
             //=== eventbus (https://github.com/greenrobot/EventBus)
             eventbus                 : "org.greenrobot:eventbus:3.1.1",
