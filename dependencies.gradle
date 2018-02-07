@@ -4,7 +4,7 @@ ext {
             compileSdkVersion : 26,
             minSdkVersion     : 20,
             targetSdkVersion  : 26,
-            applicationId     : "com.rjs.flashloan",
+            applicationId     : "com.brilliantzhao.frameproject",
             applicationFrameId: "com.brilliantzhao.andframework",
     ]
 

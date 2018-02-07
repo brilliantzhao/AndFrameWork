@@ -1,1 +1,1 @@
-include ':frameexample', ':baselibrary'
+include ':frameexample', ':baselibrary', ':frameproject'
