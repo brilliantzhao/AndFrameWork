@@ -13,18 +13,128 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <android.support.design.widget.BottomNavigationView
-            android:id="@+id/navigationView"
+        <!-- 底部的tab项，BottomNavigationView无法满足个性化需求，所以使用自定义布局 -->
+        <LinearLayout
+            android:id="@+id/bottom_navigation_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@color/colorPrimary"
-            app:itemIconTint="#fff"
-            app:itemTextColor="#fff"
-            app:layout_behavior="@string/bye_burger_bottom_behavior"
-            app:menu="@menu/bottom">
+            android:orientation="vertical"
+            app:layout_behavior="@string/bye_burger_bottom_behavior">
 
-        </android.support.design.widget.BottomNavigationView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/base_item_F0F0F0"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_item0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/iv_item0"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:src="@mipmap/icon_android" />
+
+                    <TextView
+                        android:id="@+id/tv_item0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="首页"
+                        android:textColor="@color/base_item_12151C"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_item1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/iv_item1"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:src="@mipmap/icon_android" />
+
+                    <TextView
+                        android:id="@+id/tv_item1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="帮助中心"
+                        android:textColor="@color/base_item_8792A5"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_item2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/iv_item2"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:src="@mipmap/icon_android" />
+
+                    <TextView
+                        android:id="@+id/tv_item2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="我的"
+                        android:textColor="@color/base_item_8792A5"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_item3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/iv_item3"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:src="@mipmap/icon_android" />
+
+                    <TextView
+                        android:id="@+id/tv_item3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="关于"
+                        android:textColor="@color/base_item_8792A5"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/floatingButton"

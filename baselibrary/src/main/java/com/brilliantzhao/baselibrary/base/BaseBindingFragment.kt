@@ -14,9 +14,16 @@ import android.view.ViewGroup
  * Date: 2018/2/2 10:28
  * User: BrilliantZhao
  */
-abstract class BaseBingingFragment<B : ViewDataBinding> : Fragment(), BaseView {
+abstract class BaseBingingFragment<B : ViewDataBinding> : Fragment(), View.OnClickListener,
+        BaseView {
+
+    //##########################  custom variables start ##########################################
 
     lateinit var mBinding: B
+
+    //##########################   custom variables end  ##########################################
+
+    //###################### override custom metohds start ########################################
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //===
@@ -26,10 +33,6 @@ abstract class BaseBingingFragment<B : ViewDataBinding> : Fragment(), BaseView {
         initEvent()
         return mBinding.root
     }
-
-    abstract fun createDataBinding(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): B
-
-    override fun initEvent() {}
 
     /**
      * 显示一个loading
@@ -85,8 +88,27 @@ abstract class BaseBingingFragment<B : ViewDataBinding> : Fragment(), BaseView {
         return activity
     }
 
+    //######################  override custom metohds end  ########################################
+
+    //######################      custom metohds start     ########################################
+
+    abstract fun createDataBinding(inflater: LayoutInflater?, container: ViewGroup?,
+                                   savedInstanceState: Bundle?): B
+
     fun getColorByContext(colorId: Int): Int {
         return ContextCompat.getColor(context, colorId)
     }
+
+    //######################    custom metohds end   ##############################################
+
+    //######################  override third methods start ########################################
+
+    override fun onClick(v: View) {
+        when (v.id) {
+
+        }
+    }
+
+    //######################   override third methods end  ########################################
 
 }

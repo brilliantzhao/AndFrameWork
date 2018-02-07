@@ -13,9 +13,14 @@ interface BaseView {
     fun initView()
 
     /**
-     *
+     * 事件的绑定
      */
     fun initEvent()
+
+    /**
+     * 页面数据初始化
+     */
+    fun initData()
 
     /**
      * 显示一个loading

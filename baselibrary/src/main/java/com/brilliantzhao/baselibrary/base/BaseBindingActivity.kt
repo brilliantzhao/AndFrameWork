@@ -5,7 +5,6 @@ import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
 import com.brilliantzhao.baselibrary.R
@@ -16,9 +15,16 @@ import kotlinx.android.synthetic.main.activity_base.*
  * Date: 2018/2/2 10:28
  * User: BrilliantZhao
  */
-abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity(), BaseView {
+abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity(), View.OnClickListener,
+        BaseView {
+
+    //##########################  custom variables start ##########################################
 
     lateinit var mBinding: B
+
+    //##########################   custom variables end  ##########################################
+
+    //###################### override custom metohds start ########################################
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,25 +41,7 @@ abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity(), B
         //===
         initView()
         initEvent()
-        initSome()
-    }
-
-    abstract fun createDataBinding(savedInstanceState: Bundle?): B
-
-    abstract fun getContentViewId(): Int
-
-    override fun initEvent() {}
-
-    open fun initSome() {}
-
-    fun setupToolbar(toolbar: Toolbar) {
-        toolbar.title = ""
-        toolbar.setNavigationIcon(R.mipmap.icon_back)
-        setSupportActionBar(toolbar)
-    }
-
-    fun setToolBarTitle(title: String) {
-        base_toolbar.title = title
+        initData()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -125,4 +113,29 @@ abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity(), B
      * 因为token相关错误需要跳转到登录页面
      */
     override fun toLoginActBySessionError() {}
+
+    //######################  override custom metohds end  ########################################
+
+    //######################      custom metohds start     ########################################
+
+    abstract fun getContentViewId(): Int
+
+    abstract fun createDataBinding(savedInstanceState: Bundle?): B
+
+    fun setToolBarTitle(title: String) {
+        base_toolbar.title = title
+    }
+
+    //######################    custom metohds end   ##############################################
+
+    //######################  override third methods start ########################################
+
+    override fun onClick(v: View) {
+        when (v.id) {
+
+        }
+    }
+
+    //######################   override third methods end  ########################################
+
 }

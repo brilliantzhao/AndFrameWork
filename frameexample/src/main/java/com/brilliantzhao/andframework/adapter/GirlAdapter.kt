@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.brilliantzhao.andframework.databinding.ItemGirlBinding
 import com.brilliantzhao.baselibrary.adapter.BaseBindingAdapter
-import com.brilliantzhao.baselibrary.adapter.DataBoundViewHolder
+import com.brilliantzhao.baselibrary.adapter.DataBindViewHolder
 import com.brilliantzhao.baselibrary.examplebean.FuckGoods
 
 /**
@@ -18,15 +18,15 @@ class GirlAdapter(private val mList: List<FuckGoods>) : BaseBindingAdapter<ItemG
         return mList.size
     }
 
-    override fun onBindViewHolder(holder: DataBoundViewHolder<ItemGirlBinding>, position: Int) {
+    override fun onBindViewHolder(holder: DataBindViewHolder<ItemGirlBinding>, position: Int) {
         super.onBindViewHolder(holder, position)
         holder.binding.girl = mList[holder.adapterPosition]
 
         holder.binding.executePendingBindings()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataBoundViewHolder<ItemGirlBinding> {
-        return DataBoundViewHolder(ItemGirlBinding.inflate(LayoutInflater.from(parent.context),
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataBindViewHolder<ItemGirlBinding> {
+        return DataBindViewHolder(ItemGirlBinding.inflate(LayoutInflater.from(parent.context),
                 parent, false))
     }
 

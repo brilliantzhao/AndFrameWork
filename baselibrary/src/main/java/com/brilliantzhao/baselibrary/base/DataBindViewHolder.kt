@@ -8,4 +8,4 @@ import android.support.v7.widget.RecyclerView
  * Date: 2018/2/2 10:28
  * User: BrilliantZhao
  */
-class DataBoundViewHolder<T : ViewDataBinding>(val binding: T) : RecyclerView.ViewHolder(binding.root)
+class DataBindViewHolder<T : ViewDataBinding>(val binding: T) : RecyclerView.ViewHolder(binding.root)

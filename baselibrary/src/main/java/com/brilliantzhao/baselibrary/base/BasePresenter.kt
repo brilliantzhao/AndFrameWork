@@ -9,6 +9,7 @@ import rx.subscriptions.CompositeSubscription
  * User: BrilliantZhao
  */
 open class BasePresenter {
+
     var compositeSubscription = CompositeSubscription()
 
     protected fun addSubscription(subscription: Subscription) {

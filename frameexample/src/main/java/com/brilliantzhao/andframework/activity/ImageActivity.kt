@@ -35,6 +35,14 @@ class ImageActivity : BaseBindingActivity<ActivityImageBinding>() {
         }
     }
 
+    override fun initEvent() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun initData() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     companion object {
         val IMG = "IMG"
         fun startActivity(context: Context, imageView: ImageView, url: String) {
@@ -46,6 +54,5 @@ class ImageActivity : BaseBindingActivity<ActivityImageBinding>() {
                 context.startActivity(intent)
             }
         }
-
     }
 }

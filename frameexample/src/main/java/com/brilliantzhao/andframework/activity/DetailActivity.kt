@@ -2,6 +2,7 @@ package com.brilliantzhao.andframework.activity
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.airbnb.deeplinkdispatch.DeepLink
@@ -34,7 +35,7 @@ class DetailActivity : BaseBindingActivity<ActivityDetailBinding>() {
         if (intent.getBooleanExtra(DeepLink.IS_DEEP_LINK, false)) {
             url = URLDecoder.decode(intent.extras.getString(ExampleClientUri.DETAIL_PARAM_URL))
         }
-        setupToolbar(toolbar)
+
         tv_title.text = "Gank.io"
         webView.loadUrl(url)
         webView.setWebViewClient(object : WebViewClient() {
@@ -44,6 +45,14 @@ class DetailActivity : BaseBindingActivity<ActivityDetailBinding>() {
             }
         }
         )
+    }
+
+    override fun initEvent() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun initData() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }

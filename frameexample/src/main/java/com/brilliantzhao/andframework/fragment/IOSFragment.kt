@@ -25,6 +25,11 @@ import javax.inject.Inject
  * User: BrilliantZhao
  */
 class IOSFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsContract.View {
+    override fun initEvent() {
+    }
+
+    override fun initData() {
+    }
 
     private var mList = ArrayList<FuckGoods>()
 

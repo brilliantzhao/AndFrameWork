@@ -26,6 +26,11 @@ import javax.inject.Inject
  * User: BrilliantZhao
  */
 class GirlFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsContract.View {
+    override fun initEvent() {
+    }
+
+    override fun initData() {
+    }
 
     private lateinit var mRecyclerView: RecyclerView
 

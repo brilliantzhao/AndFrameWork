@@ -13,13 +13,13 @@ interface FuckGoodsContract {
 
     interface View {
 
-        fun  setData(results: List<FuckGoods>)
+        fun setData(results: List<FuckGoods>)
 
     }
 
     interface Model {
 
-        fun getData(page: Int,type:String): Observable<JsonResult<List<FuckGoods>>>
+        fun getData(page: Int, type: String): Observable<JsonResult<List<FuckGoods>>>
     }
 
     interface Presenter {

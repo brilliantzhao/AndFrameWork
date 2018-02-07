@@ -41,7 +41,6 @@ class ProgressWebView(context: Context, attrs: AttributeSet) : WebView(context, 
             }
             super.onProgressChanged(view, newProgress)
         }
-
     }
 
     override fun onScrollChanged(l: Int, t: Int, oldl: Int, oldt: Int) {

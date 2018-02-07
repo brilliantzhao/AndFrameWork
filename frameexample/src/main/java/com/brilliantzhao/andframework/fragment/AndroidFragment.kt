@@ -67,7 +67,12 @@ class AndroidFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsCon
             val url = URLEncoder.encode(mList[pos].url)
             Router.router(context, ExampleClientUri.DETAIL + url)
         }
+    }
 
+    override fun initEvent() {
+    }
+
+    override fun initData() {
     }
 
     override fun setData(results: List<FuckGoods>) {

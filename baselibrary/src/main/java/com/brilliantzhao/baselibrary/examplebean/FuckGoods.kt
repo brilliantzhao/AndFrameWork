@@ -1,7 +1,7 @@
 package com.brilliantzhao.baselibrary.examplebean
 
 /**
- * description:
+ * description: 示例工程的数据类
  * Date: 2018/2/2 10:28
  * User: BrilliantZhao
  */

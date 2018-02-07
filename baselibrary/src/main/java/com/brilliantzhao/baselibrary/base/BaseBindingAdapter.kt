@@ -8,10 +8,11 @@ import android.support.v7.widget.RecyclerView
  * Date: 2018/2/2 10:28
  * User: BrilliantZhao
  */
-abstract class BaseBindingAdapter<B : ViewDataBinding> : RecyclerView.Adapter<DataBoundViewHolder<B>>() {
+abstract class BaseBindingAdapter<B : ViewDataBinding> : RecyclerView.Adapter<DataBindViewHolder<B>>() {
+
     var mListener: ((pos: Int) -> Unit)? = null
 
-    override fun onBindViewHolder(holder: DataBoundViewHolder<B>, position: Int) {
+    override fun onBindViewHolder(holder: DataBindViewHolder<B>, position: Int) {
         holder.binding.root.setOnClickListener {
             mListener?.invoke(holder.adapterPosition)
         }

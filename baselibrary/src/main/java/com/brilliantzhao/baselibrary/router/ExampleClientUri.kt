@@ -14,4 +14,5 @@ object ExampleClientUri {
     const val DETAIL_PARAM_URL = "url"
 
     const val DETAIL = "gank://androidwing.net/detail/"
+
 }

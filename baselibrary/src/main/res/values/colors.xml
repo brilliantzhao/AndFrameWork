@@ -7,4 +7,12 @@
     <color name="windowBackground">#FFFFFF</color>
     <color name="themColor">#3F51B5</color>
 
+    <!-- -->
+    <color name="white">#FFFFFF</color>
+
+    <!-- -->
+    <color name="base_item_F0F0F0">#F0F0F0</color>
+    <color name="base_item_12151C">#12151C</color>
+    <color name="base_item_8792A5">#8792A5</color>
+
 </resources>

@@ -12,13 +12,11 @@ import android.view.MotionEvent
  */
 class NoScrollViewPager : ViewPager {
 
-    private val isPagingEnabled = false
+    var isPagingEnabled = false
 
-    constructor(context: Context) : super(context) {
-    }
+    constructor(context: Context) : super(context)
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-    }
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         return this.isPagingEnabled && super.onTouchEvent(event)
