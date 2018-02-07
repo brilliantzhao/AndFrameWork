@@ -8,7 +8,7 @@ import com.airbnb.deeplinkdispatch.DeepLink
 import com.brilliantzhao.andframework.R
 import com.brilliantzhao.andframework.databinding.ActivityDetailBinding
 import com.brilliantzhao.baselibrary.base.BaseBindingActivity
-import com.brilliantzhao.baselibrary.router.GankClientUri
+import com.brilliantzhao.baselibrary.router.ExampleClientUri
 import kotlinx.android.synthetic.main.activity_detail.*
 import java.net.URLDecoder
 
@@ -17,12 +17,22 @@ import java.net.URLDecoder
  * Date: 2018/2/2 10:28
  * User: BrilliantZhao
  */
-@DeepLink("gank://androidwing.net/detail/{${GankClientUri.DETAIL_PARAM_URL}}")
+@DeepLink("gank://androidwing.net/detail/{${ExampleClientUri.DETAIL_PARAM_URL}}")
 class DetailActivity : BaseBindingActivity<ActivityDetailBinding>() {
+
     var url = ""
+
+    override fun getContentViewId(): Int {
+        return R.layout.activity_detail
+    }
+
+    override fun createDataBinding(savedInstanceState: Bundle?): ActivityDetailBinding {
+        return DataBindingUtil.setContentView(this, getContentViewId())
+    }
+
     override fun initView() {
         if (intent.getBooleanExtra(DeepLink.IS_DEEP_LINK, false)) {
-            url = URLDecoder.decode(intent.extras.getString(GankClientUri.DETAIL_PARAM_URL))
+            url = URLDecoder.decode(intent.extras.getString(ExampleClientUri.DETAIL_PARAM_URL))
         }
         setupToolbar(toolbar)
         tv_title.text = "Gank.io"
@@ -34,10 +44,6 @@ class DetailActivity : BaseBindingActivity<ActivityDetailBinding>() {
             }
         }
         )
-    }
-
-    override fun createDataBinding(savedInstanceState: Bundle?): ActivityDetailBinding {
-        return DataBindingUtil.setContentView(this, R.layout.activity_detail)
     }
 
 }

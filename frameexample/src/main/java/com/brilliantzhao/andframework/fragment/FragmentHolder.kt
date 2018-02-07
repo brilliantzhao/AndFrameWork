@@ -12,6 +12,7 @@ import com.brilliantzhao.baselibrary.base.BaseBingingFragment
  * User: BrilliantZhao
  */
 class FragmentHolder : BaseBingingFragment<FragmentAboutBinding>() {
+
     override fun createDataBinding(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): FragmentAboutBinding {
         return FragmentAboutBinding.inflate(inflater!!, container, false)
     }

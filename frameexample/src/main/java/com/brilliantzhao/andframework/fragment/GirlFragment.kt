@@ -15,7 +15,7 @@ import com.brilliantzhao.andframework.databinding.ViewRecyclerBinding
 import com.brilliantzhao.andframework.getMainComponent
 import com.brilliantzhao.andframework.presenter.FuckGoodsPresenter
 import com.brilliantzhao.baselibrary.base.BaseBingingFragment
-import com.brilliantzhao.baselibrary.projectbean.FuckGoods
+import com.brilliantzhao.baselibrary.examplebean.FuckGoods
 import kotlinx.android.synthetic.main.view_recycler.*
 import java.util.*
 import javax.inject.Inject
@@ -26,13 +26,17 @@ import javax.inject.Inject
  * User: BrilliantZhao
  */
 class GirlFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsContract.View {
+
     private lateinit var mRecyclerView: RecyclerView
+
     private var mList = ArrayList<FuckGoods>()
+
     private lateinit var mAdapter: GirlAdapter
+
     private var mPage = 1
+
     @Inject
     lateinit var mPresenter: FuckGoodsPresenter
-
 
     override fun createDataBinding(inflater: LayoutInflater?, container: ViewGroup?,
                                    savedInstanceState: Bundle?): ViewRecyclerBinding {
@@ -58,17 +62,13 @@ class GirlFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsContra
                     super.onScrollStateChanged(recyclerView, newState)
                 }
             })
-
             mPresenter.getData(mPage, GIRL)
         }
 
         mAdapter.setOnItemClickListener { pos ->
-
             val imageView = recyclerView.findViewHolderForAdapterPosition(pos)?.itemView?.findViewById(R.id.iv_girl) as ImageView
-
             ImageActivity.startActivity(context, imageView, mList[pos].url)
         }
-
     }
 
     override fun onDestroy() {
@@ -77,7 +77,6 @@ class GirlFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsContra
     }
 
     override fun setData(results: List<FuckGoods>) {
-
         mList.addAll(results)
         mAdapter.notifyDataSetChanged()
     }

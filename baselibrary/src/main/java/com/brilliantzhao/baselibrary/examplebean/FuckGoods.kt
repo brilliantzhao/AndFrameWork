@@ -1,4 +1,4 @@
-package com.brilliantzhao.baselibrary.projectbean
+package com.brilliantzhao.baselibrary.examplebean
 
 /**
  * description:

@@ -4,9 +4,9 @@ import com.brilliantzhao.andframework.contract.FuckGoodsContract
 import com.brilliantzhao.andframework.fragment.AndroidFragment
 import com.brilliantzhao.andframework.fragment.GirlFragment
 import com.brilliantzhao.andframework.fragment.IOSFragment
-import com.brilliantzhao.baselibrary.api.GankApi
+import com.brilliantzhao.baselibrary.api.ExampleApi
 import com.brilliantzhao.baselibrary.base.JsonResult
-import com.brilliantzhao.baselibrary.projectbean.FuckGoods
+import com.brilliantzhao.baselibrary.examplebean.FuckGoods
 import rx.Observable
 import javax.inject.Inject
 
@@ -16,7 +16,7 @@ import javax.inject.Inject
  * User: BrilliantZhao
  */
 class FuckGoodsModel
-@Inject constructor(private val api: GankApi) : FuckGoodsContract.Model {
+@Inject constructor(private val api: ExampleApi) : FuckGoodsContract.Model {
 
     override fun getData(page: Int, type: String): Observable<JsonResult<List<FuckGoods>>> {
         when (type) {

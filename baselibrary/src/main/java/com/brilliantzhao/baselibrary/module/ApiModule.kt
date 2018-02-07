@@ -2,7 +2,7 @@ package com.brilliantzhao.baselibrary.module
 
 import android.content.Context
 import android.util.Log
-import com.brilliantzhao.baselibrary.api.GankApi
+import com.brilliantzhao.baselibrary.api.ExampleApi
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -16,6 +16,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import rx.schedulers.Schedulers
 import java.io.File
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 /**
@@ -25,6 +26,7 @@ import javax.inject.Singleton
  */
 @Module(includes = arrayOf(AppModule::class))
 class ApiModule {
+
     @Provides
     @Singleton
     fun provideRetrofit(baseUrl: HttpUrl, client: OkHttpClient, gson: Gson) =
@@ -44,8 +46,10 @@ class ApiModule {
         val cacheDir = File(context.cacheDir, "http")
         val cache = Cache(cacheDir, cacheSize)
         return OkHttpClient.Builder()
+                .connectTimeout(20, TimeUnit.SECONDS)
                 .cache(cache)
-                .addInterceptor(interceptor).build()
+                .addInterceptor(interceptor)
+                .build()
     }
 
     @Provides
@@ -61,6 +65,6 @@ class ApiModule {
     fun provideGson() = GsonBuilder().create()
 
     @Provides
-    fun provideApi(retrofit: Retrofit) = retrofit.create(GankApi::class.java)
+    fun provideApi(retrofit: Retrofit) = retrofit.create(ExampleApi::class.java)
 }
 

@@ -15,9 +15,9 @@ import com.brilliantzhao.andframework.fragment.IOSFragment
 import com.brilliantzhao.andframework.getMainComponent
 import com.brilliantzhao.andframework.presenter.RandomPresenter
 import com.brilliantzhao.baselibrary.base.BaseBindingActivity
-import com.brilliantzhao.baselibrary.projectbean.FuckGoods
-import com.brilliantzhao.baselibrary.router.GankClientUri
-import com.brilliantzhao.baselibrary.router.GankRouter
+import com.brilliantzhao.baselibrary.examplebean.FuckGoods
+import com.brilliantzhao.baselibrary.router.ExampleClientUri
+import com.brilliantzhao.baselibrary.router.Router
 import kotlinx.android.synthetic.main.activity_main.*
 import java.net.URLEncoder
 import java.util.*
@@ -35,8 +35,12 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(), RandomContract.
     @Inject
     lateinit var mPresenter: RandomPresenter
 
+    override fun getContentViewId(): Int {
+        return R.layout.activity_main
+    }
+
     override fun createDataBinding(savedInstanceState: Bundle?): ActivityMainBinding {
-        return DataBindingUtil.setContentView(this, R.layout.activity_main)
+        return DataBindingUtil.setContentView(this, getContentViewId())
     }
 
     override fun initView() {
@@ -68,7 +72,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(), RandomContract.
 
     override fun onRandom(goods: FuckGoods) {
         val url = URLEncoder.encode(goods.url)
-        GankRouter.router(this, GankClientUri.DETAIL + url)
+        Router.router(this, ExampleClientUri.DETAIL + url)
     }
 
     private fun initFragments() {

@@ -12,9 +12,9 @@ import com.brilliantzhao.andframework.databinding.ViewRecyclerBinding
 import com.brilliantzhao.andframework.getMainComponent
 import com.brilliantzhao.andframework.presenter.FuckGoodsPresenter
 import com.brilliantzhao.baselibrary.base.BaseBingingFragment
-import com.brilliantzhao.baselibrary.projectbean.FuckGoods
-import com.brilliantzhao.baselibrary.router.GankClientUri
-import com.brilliantzhao.baselibrary.router.GankRouter
+import com.brilliantzhao.baselibrary.examplebean.FuckGoods
+import com.brilliantzhao.baselibrary.router.ExampleClientUri
+import com.brilliantzhao.baselibrary.router.Router
 import java.net.URLEncoder
 import java.util.*
 import javax.inject.Inject
@@ -27,8 +27,11 @@ import javax.inject.Inject
 class AndroidFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsContract.View {
 
     private var mList = ArrayList<FuckGoods>()
+
     private lateinit var mAdapter: FuckGoodsAdapter
+
     private var mPage = 1
+
     @Inject
     lateinit var mPresenter: FuckGoodsPresenter
 
@@ -62,7 +65,7 @@ class AndroidFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsCon
 
         mAdapter.setOnItemClickListener { pos ->
             val url = URLEncoder.encode(mList[pos].url)
-            GankRouter.router(context, GankClientUri.DETAIL + url)
+            Router.router(context, ExampleClientUri.DETAIL + url)
         }
 
     }

@@ -5,7 +5,8 @@ package com.brilliantzhao.baselibrary.router
  * Date: 2018/2/2 10:28
  * User: BrilliantZhao
  */
-object GankClientUri {
+object ExampleClientUri {
+
     //关于Activity
     const val ABOUT = "gank://androidwing.net/about/"
 

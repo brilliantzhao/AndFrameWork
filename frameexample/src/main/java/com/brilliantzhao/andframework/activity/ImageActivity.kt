@@ -19,16 +19,20 @@ import com.brilliantzhao.baselibrary.base.BaseBindingActivity
  */
 class ImageActivity : BaseBindingActivity<ActivityImageBinding>() {
 
+    override fun getContentViewId(): Int {
+        return R.layout.activity_image
+    }
+
+    override fun createDataBinding(savedInstanceState: Bundle?): ActivityImageBinding {
+        return DataBindingUtil.setContentView(this, getContentViewId())
+    }
+
     override fun initView() {
         mBinding.url = intent.getStringExtra(IMG)
         mBinding.root.setOnClickListener {
 
             supportFinishAfterTransition()
         }
-    }
-
-    override fun createDataBinding(savedInstanceState: Bundle?): ActivityImageBinding {
-        return DataBindingUtil.setContentView(this, R.layout.activity_image)
     }
 
     companion object {

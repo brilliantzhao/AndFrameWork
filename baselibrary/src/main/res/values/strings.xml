@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">BaseLibrary</string>
+
+    <string name="base_loading">正在为您加载...</string>
+
 </resources>

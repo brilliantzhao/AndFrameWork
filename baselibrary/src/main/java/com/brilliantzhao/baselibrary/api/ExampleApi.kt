@@ -1,7 +1,7 @@
 package com.brilliantzhao.baselibrary.api
 
 import com.brilliantzhao.baselibrary.base.JsonResult
-import com.brilliantzhao.baselibrary.projectbean.FuckGoods
+import com.brilliantzhao.baselibrary.examplebean.FuckGoods
 import retrofit2.http.GET
 import retrofit2.http.Path
 import rx.Observable
@@ -11,7 +11,7 @@ import rx.Observable
  * Date: 2018/2/2 10:28
  * User: BrilliantZhao
  */
-interface GankApi {
+interface ExampleApi {
 
     /**
      * Android所有数据

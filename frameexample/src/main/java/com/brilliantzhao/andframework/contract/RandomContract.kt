@@ -1,7 +1,7 @@
 package com.brilliantzhao.andframework.contract
 
 import com.brilliantzhao.baselibrary.base.JsonResult
-import com.brilliantzhao.baselibrary.projectbean.FuckGoods
+import com.brilliantzhao.baselibrary.examplebean.FuckGoods
 import rx.Observable
 
 /**

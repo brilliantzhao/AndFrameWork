@@ -9,7 +9,8 @@ import android.net.Uri
  * Date: 2018/2/2 10:28
  * User: BrilliantZhao
  */
-object GankRouter {
+object Router {
+
     fun router(context: Context, uri: String) {
         val intent = Intent()
         intent.data = Uri.parse(uri)
