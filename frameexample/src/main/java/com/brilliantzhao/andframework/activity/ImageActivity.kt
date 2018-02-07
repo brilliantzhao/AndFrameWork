@@ -19,6 +19,12 @@ import com.brilliantzhao.baselibrary.base.BaseBindingActivity
  */
 class ImageActivity : BaseBindingActivity<ActivityImageBinding>() {
 
+    //##########################  custom variables start ##########################################
+
+    //##########################   custom variables end  ##########################################
+
+    //###################### override custom metohds start ########################################
+
     override fun getContentViewId(): Int {
         return R.layout.activity_image
     }
@@ -30,18 +36,19 @@ class ImageActivity : BaseBindingActivity<ActivityImageBinding>() {
     override fun initView() {
         mBinding.url = intent.getStringExtra(IMG)
         mBinding.root.setOnClickListener {
-
             supportFinishAfterTransition()
         }
     }
 
     override fun initEvent() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+    //######################  override custom metohds end  ########################################
+
+    //######################      custom metohds start     ########################################
 
     companion object {
         val IMG = "IMG"
@@ -49,10 +56,17 @@ class ImageActivity : BaseBindingActivity<ActivityImageBinding>() {
             val intent = Intent(context, ImageActivity::class.java)
             intent.putExtra(IMG, url)
             if (Build.VERSION.SDK_INT > 21) {
-                context.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(context as Activity, imageView, "img").toBundle())
+                context.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(
+                        context as Activity, imageView, "img").toBundle())
             } else {
                 context.startActivity(intent)
             }
         }
     }
+
+    //######################    custom metohds end   ##############################################
+
+    //######################  override third methods start ########################################
+
+    //######################   override third methods end  ########################################
 }

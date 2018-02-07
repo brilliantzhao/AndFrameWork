@@ -13,6 +13,7 @@ import javax.inject.Inject
 class RandomPresenter
 @Inject constructor(private val mModel: RandomModel,
                     private val mView: RandomContract.View) : RandomContract.Presenter, BasePresenter() {
+
     override fun getRandom(type: String) {
         addSubscription(mModel.getRandom(type).observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ res ->
@@ -21,4 +22,5 @@ class RandomPresenter
                     }
                 }, {}))
     }
+
 }

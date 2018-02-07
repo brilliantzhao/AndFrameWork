@@ -2,7 +2,6 @@ package com.brilliantzhao.andframework.activity
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.airbnb.deeplinkdispatch.DeepLink
@@ -21,7 +20,13 @@ import java.net.URLDecoder
 @DeepLink("gank://androidwing.net/detail/{${ExampleClientUri.DETAIL_PARAM_URL}}")
 class DetailActivity : BaseBindingActivity<ActivityDetailBinding>() {
 
+    //##########################  custom variables start ##########################################
+
     var url = ""
+
+    //##########################   custom variables end  ##########################################
+
+    //###################### override custom metohds start ########################################
 
     override fun getContentViewId(): Int {
         return R.layout.activity_detail
@@ -36,7 +41,6 @@ class DetailActivity : BaseBindingActivity<ActivityDetailBinding>() {
             url = URLDecoder.decode(intent.extras.getString(ExampleClientUri.DETAIL_PARAM_URL))
         }
 
-        tv_title.text = "Gank.io"
         webView.loadUrl(url)
         webView.setWebViewClient(object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
@@ -48,11 +52,19 @@ class DetailActivity : BaseBindingActivity<ActivityDetailBinding>() {
     }
 
     override fun initEvent() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+    //######################  override custom metohds end  ########################################
+
+    //######################      custom metohds start     ########################################
+
+    //######################    custom metohds end   ##############################################
+
+    //######################  override third methods start ########################################
+
+    //######################   override third methods end  ########################################
 
 }

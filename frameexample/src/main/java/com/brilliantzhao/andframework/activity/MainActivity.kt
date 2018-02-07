@@ -32,12 +32,18 @@ import javax.inject.Inject
  */
 class MainActivity : BaseBindingActivity<ActivityMainBinding>(), RandomContract.View {
 
+    //##########################  custom variables start ##########################################
+
     private var lastSelectedPosition = 0
 
     lateinit var mFragments: MutableList<Fragment>
 
     @Inject
     lateinit var mPresenter: RandomPresenter
+
+    //##########################   custom variables end  ##########################################
+
+    //###################### override custom metohds start ########################################
 
     override fun getContentViewId(): Int {
         return R.layout.activity_main
@@ -48,16 +54,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(), RandomContract.
     }
 
     override fun initView() {
-        initFragments()
-
-        getMainComponent().plus(RandomModule(this)).inject(this)
-
-        //viewpager配置
-        initViewPage()
-
-        // 默认选中
-        setViewPageDisPosition(lastSelectedPosition)
-
+        setToolBarGone()
     }
 
     override fun initEvent() {
@@ -69,37 +66,17 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(), RandomContract.
     }
 
     override fun initData() {
-
+        initFragments()
+        getMainComponent().plus(RandomModule(this)).inject(this)
+        //viewpager配置
+        initViewPage()
+        // 默认选中
+        setViewPageDisPosition(lastSelectedPosition)
     }
 
-    override fun onClick(v: View) {
-        when (v.id) {
-            R.id.ll_item0 -> {
-                lastSelectedPosition = 0
-                setViewPageDisPosition(lastSelectedPosition)
-            }
-            R.id.ll_item1 -> {
-                lastSelectedPosition = 1
-                setViewPageDisPosition(lastSelectedPosition)
-            }
-            R.id.ll_item2 -> {
-                lastSelectedPosition = 2
-                setViewPageDisPosition(lastSelectedPosition)
-            }
-            R.id.ll_item3 -> {
-                lastSelectedPosition = 3
-                setViewPageDisPosition(lastSelectedPosition)
-            }
-            R.id.floatingButton -> {
-                mPresenter.getRandom("Android")
-            }
-        }
-    }
+    //######################  override custom metohds end  ########################################
 
-    override fun onRandom(goods: FuckGoods) {
-        val url = URLEncoder.encode(goods.url)
-        Router.router(this, ExampleClientUri.DETAIL + url)
-    }
+    //######################      custom metohds start     ########################################
 
     private fun initFragments() {
         mFragments = ArrayList()
@@ -150,4 +127,38 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(), RandomContract.
         }
     }
 
+    //######################    custom metohds end   ##############################################
+
+    //######################  override third methods start ########################################
+
+    override fun onClick(v: View) {
+        when (v.id) {
+            R.id.ll_item0 -> {
+                lastSelectedPosition = 0
+                setViewPageDisPosition(lastSelectedPosition)
+            }
+            R.id.ll_item1 -> {
+                lastSelectedPosition = 1
+                setViewPageDisPosition(lastSelectedPosition)
+            }
+            R.id.ll_item2 -> {
+                lastSelectedPosition = 2
+                setViewPageDisPosition(lastSelectedPosition)
+            }
+            R.id.ll_item3 -> {
+                lastSelectedPosition = 3
+                setViewPageDisPosition(lastSelectedPosition)
+            }
+            R.id.floatingButton -> {
+                mPresenter.getRandom("Android")
+            }
+        }
+    }
+
+    override fun onRandom(goods: FuckGoods) {
+        val url = URLEncoder.encode(goods.url)
+        Router.router(this, ExampleClientUri.DETAIL + url)
+    }
+
+    //######################   override third methods end  ########################################
 }

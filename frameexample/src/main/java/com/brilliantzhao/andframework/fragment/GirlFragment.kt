@@ -26,11 +26,8 @@ import javax.inject.Inject
  * User: BrilliantZhao
  */
 class GirlFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsContract.View {
-    override fun initEvent() {
-    }
 
-    override fun initData() {
-    }
+    //##########################  custom variables start ##########################################
 
     private lateinit var mRecyclerView: RecyclerView
 
@@ -42,6 +39,10 @@ class GirlFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsContra
 
     @Inject
     lateinit var mPresenter: FuckGoodsPresenter
+
+    //##########################   custom variables end  ##########################################
+
+    //###################### override custom metohds start ########################################
 
     override fun createDataBinding(inflater: LayoutInflater?, container: ViewGroup?,
                                    savedInstanceState: Bundle?): ViewRecyclerBinding {
@@ -76,15 +77,20 @@ class GirlFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsContra
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        mPresenter.unSubscribe()
+    override fun initEvent() {
+    }
+
+    override fun initData() {
     }
 
     override fun setData(results: List<FuckGoods>) {
         mList.addAll(results)
         mAdapter.notifyDataSetChanged()
     }
+
+    //######################  override custom metohds end  ########################################
+
+    //######################      custom metohds start     ########################################
 
     companion object {
         val GIRL = "GIRL"
@@ -95,4 +101,16 @@ class GirlFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsContra
             return fragment
         }
     }
+
+    //######################    custom metohds end   ##############################################
+
+    //######################  override third methods start ########################################
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter.unSubscribe()
+    }
+
+    //######################   override third methods end  ########################################
+
 }

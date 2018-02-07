@@ -20,8 +20,8 @@ class GirlAdapter(private val mList: List<FuckGoods>) : BaseBindingAdapter<ItemG
 
     override fun onBindViewHolder(holder: DataBindViewHolder<ItemGirlBinding>, position: Int) {
         super.onBindViewHolder(holder, position)
-        holder.binding.girl = mList[holder.adapterPosition]
 
+        holder.binding.girl = mList[holder.adapterPosition]
         holder.binding.executePendingBindings()
     }
 

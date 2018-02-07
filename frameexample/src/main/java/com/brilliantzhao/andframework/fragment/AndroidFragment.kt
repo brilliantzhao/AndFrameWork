@@ -26,6 +26,8 @@ import javax.inject.Inject
  */
 class AndroidFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsContract.View {
 
+    //##########################  custom variables start ##########################################
+
     private var mList = ArrayList<FuckGoods>()
 
     private lateinit var mAdapter: FuckGoodsAdapter
@@ -34,6 +36,10 @@ class AndroidFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsCon
 
     @Inject
     lateinit var mPresenter: FuckGoodsPresenter
+
+    //##########################   custom variables end  ##########################################
+
+    //###################### override custom metohds start ########################################
 
     override fun createDataBinding(inflater: LayoutInflater?, container: ViewGroup?,
                                    savedInstanceState: Bundle?): ViewRecyclerBinding {
@@ -80,10 +86,9 @@ class AndroidFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsCon
         mAdapter.notifyDataSetChanged()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        mPresenter.unSubscribe()
-    }
+    //######################  override custom metohds end  ########################################
+
+    //######################      custom metohds start     ########################################
 
     companion object {
         val ANDROID = "ANDROID"
@@ -94,5 +99,16 @@ class AndroidFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsCon
             return fragment
         }
     }
+
+    //######################    custom metohds end   ##############################################
+
+    //######################  override third methods start ########################################
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter.unSubscribe()
+    }
+
+    //######################   override third methods end  ########################################
 
 }

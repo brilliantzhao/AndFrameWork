@@ -51,6 +51,8 @@ abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity(), V
         return super.onOptionsItemSelected(item)
     }
 
+    //################################################################# loading的处理 start
+
     /**
      * 显示一个loading
      */
@@ -72,6 +74,10 @@ abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity(), V
         base_loading_layout.visibility = View.GONE
     }
 
+    //################################################################# loading的处理 end
+
+    //################################################################# toast提示处理 start
+
     /**
      * 弹一个吐司提示
      *
@@ -90,6 +96,8 @@ abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity(), V
     override fun showTipMessage(code: Int, msg: String) {
         Snackbar.make(base_layout, msg, Snackbar.LENGTH_SHORT).show()
     }
+
+    //################################################################# toast提示处理 end
 
     /**
      * 获得上下文对象
@@ -122,9 +130,21 @@ abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity(), V
 
     abstract fun createDataBinding(savedInstanceState: Bundle?): B
 
+    //################################################################# toolBar的处理 start
+
+    fun setToolBarGone() {
+        base_toolbar.visibility = View.GONE
+    }
+
+    /**
+     * 设置标题
+     */
     fun setToolBarTitle(title: String) {
+        base_toolbar.visibility = View.VISIBLE
         base_toolbar.title = title
     }
+
+    //################################################################# toolBar的处理 end
 
     //######################    custom metohds end   ##############################################
 

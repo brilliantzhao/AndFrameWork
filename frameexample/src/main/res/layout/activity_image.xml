@@ -20,6 +20,7 @@
             android:scaleType="centerCrop"
             android:transitionName="img"
             app:load_image="@{url}" />
+
     </RelativeLayout>
 
 </layout>

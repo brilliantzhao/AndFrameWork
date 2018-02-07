@@ -53,6 +53,9 @@ dependencies {
     compile dependencies.kotlinReflect
     //=== databinding
     kapt dependencies.databinding
+    //=== deeplinkdispatch
+    compile dependencies.deeplinkdispatch
+    kapt dependencies.deeplinkdispatchProcessor
     //################## 引用第三方工程
     implementation project(':baselibrary')
 }

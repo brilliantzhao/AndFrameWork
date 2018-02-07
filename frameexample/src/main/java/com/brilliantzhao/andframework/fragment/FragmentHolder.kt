@@ -12,13 +12,15 @@ import com.brilliantzhao.baselibrary.base.BaseBingingFragment
  * User: BrilliantZhao
  */
 class FragmentHolder : BaseBingingFragment<FragmentAboutBinding>() {
-    override fun initEvent() {
-    }
 
-    override fun initData() {
-    }
+    //##########################  custom variables start ##########################################
 
-    override fun createDataBinding(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): FragmentAboutBinding {
+    //##########################   custom variables end  ##########################################
+
+    //###################### override custom metohds start ########################################
+
+    override fun createDataBinding(inflater: LayoutInflater?, container: ViewGroup?,
+                                   savedInstanceState: Bundle?): FragmentAboutBinding {
         return FragmentAboutBinding.inflate(inflater!!, container, false)
     }
 
@@ -33,8 +35,22 @@ class FragmentHolder : BaseBingingFragment<FragmentAboutBinding>() {
                 .plus("Gson\n")
                 .plus("Glide")
         mBinding?.tvThank?.text = text
-
     }
 
+    override fun initEvent() {
+    }
+
+    override fun initData() {
+    }
+
+    //######################  override custom metohds end  ########################################
+
+    //######################      custom metohds start     ########################################
+
+    //######################    custom metohds end   ##############################################
+
+    //######################  override third methods start ########################################
+
+    //######################   override third methods end  ########################################
 
 }
