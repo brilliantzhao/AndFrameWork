@@ -3,6 +3,7 @@ package com.brilliantzhao.andframework.fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.blankj.utilcode.util.LogUtils
 import com.brilliantzhao.andframework.databinding.FragmentAboutBinding
 import com.brilliantzhao.baselibrary.base.BaseBingingFragment
 
@@ -41,6 +42,18 @@ class FragmentHolder : BaseBingingFragment<FragmentAboutBinding>() {
     }
 
     override fun initData() {
+    }
+
+    override fun onLazyLoadOnce() {
+        LogUtils.i(className + "-->onLazyLoadOnce")
+    }
+
+    override fun onVisibleToUser() {
+        LogUtils.i(className + "-->onVisibleToUser")
+    }
+
+    override fun onInvisibleToUser() {
+        LogUtils.i(className + "-->onInvisibleToUser")
     }
 
     //######################  override custom metohds end  ########################################

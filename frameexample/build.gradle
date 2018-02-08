@@ -129,6 +129,7 @@ android {
         flavorDimensions "android"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
         signingConfig signingConfigs.signingConfig
     }
 
@@ -186,7 +187,7 @@ android {
 
         // 设置渠道包名称
         productFlavors.all { flavor ->
-            flavor.manifestPlaceholders = [aliyun_man_channel: name]
+            flavor.manifestPlaceholders = [umeng_channel: name]
         }
     }
 

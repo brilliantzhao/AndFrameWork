@@ -25,7 +25,6 @@ ext {
 
             //=== android
             supportAnnotations       : "com.android.support:support-annotations:26.1.0",
-            multidex                 : "com.android.support:multidex:1.0.1",
 
             //=== android test
             junit                    : "junit:junit:4.12",
@@ -82,7 +81,7 @@ ext {
             hawk                     : "com.orhanobut:hawk:2.0.1",
 
             //=== AndroidUtilCode  (https://github.com/Blankj/AndroidUtilCode)
-            utilcode                 : "com.blankj:utilcode:1.12.3",
+            utilcode                 : "com.blankj:utilcode:1.12.5",
 
             //=== stetho (https://github.com/facebook/stetho)
             // 可以查看网络请求，数据库，SharedPreference数据等，相对于抓包更加有优势

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.blankj.utilcode.util.LogUtils
 import com.brilliantzhao.baselibrary.base.BaseBingingFragment
 import com.brilliantzhao.baselibrary.databinding.FragmentModelBinding
 
@@ -26,15 +27,24 @@ class ModelFragment : BaseBingingFragment<FragmentModelBinding>() {
     }
 
     override fun initView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initEvent() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onLazyLoadOnce() {
+        LogUtils.i(className + "-->onLazyLoadOnce")
+    }
+
+    override fun onVisibleToUser() {
+        LogUtils.i(className + "-->onVisibleToUser")
+    }
+
+    override fun onInvisibleToUser() {
+        LogUtils.i(className + "-->onInvisibleToUser")
     }
 
     //######################  override custom metohds end  ########################################

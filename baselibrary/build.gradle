@@ -28,7 +28,7 @@ android {
         resValue("string", 'APP_IS_ONLINE_VERSION', APP_IS_ONLINE_VERSION)
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -91,7 +91,6 @@ dependencies {
     compile dependencies.design
     compile dependencies.recyclerview
     compile dependencies.cardviewV7
-    compile dependencies.multidex
     //################## 引入第三方jar包
     //################## git上第三方库
     //=== RX
@@ -136,9 +135,13 @@ dependencies {
     //=== stetho
     compile dependencies.stetho
     compile dependencies.stethoOkhttp3
+    compile dependencies.stethoJsRhino
     //=== eventbus
     compile dependencies.eventbus
     //=== rxpermissions
     compile dependencies.rxpermissions
+    //=== umeng
+    compile 'com.umeng.sdk:common:latest.integration'
+    compile 'com.umeng.sdk:analytics:latest.integration'
     //################## 引用第三方工程
 }

@@ -5,7 +5,7 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 
 /**
- * description:
+ * description: 数据绑定的工具类
  * Date: 2018/2/2 10:28
  * User: BrilliantZhao
  */

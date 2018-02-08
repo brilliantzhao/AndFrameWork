@@ -1,8 +1,8 @@
 package com.brilliantzhao.andframework
 
-import android.app.Application
 import com.brilliantzhao.andframework.component.ApiComponent
 import com.brilliantzhao.andframework.component.DaggerApiComponent
+import com.brilliantzhao.baselibrary.base.BaseApplication
 import com.brilliantzhao.baselibrary.module.ApiModule
 import com.brilliantzhao.baselibrary.module.AppModule
 import javax.inject.Inject
@@ -12,7 +12,9 @@ import javax.inject.Inject
  * Date: 2018/2/2 10:28
  * User: BrilliantZhao
  */
-class App : Application() {
+class App : BaseApplication() {
+
+    //##########################  custom variables start ##########################################
 
     init {
         instance = this
@@ -20,6 +22,10 @@ class App : Application() {
 
     @Inject
     lateinit var apiComponent: ApiComponent
+
+    //##########################   custom variables end  ##########################################
+
+    //###################### override custom metohds start ########################################
 
     override fun onCreate() {
         super.onCreate()
@@ -32,8 +38,18 @@ class App : Application() {
                 .inject(this)
     }
 
+    //######################  override custom metohds end  ########################################
+
+    //######################      custom metohds start     ########################################
+
     companion object {
         lateinit var instance: App
     }
+
+    //######################    custom metohds end   ##############################################
+
+    //######################  override third methods start ########################################
+
+    //######################   override third methods end  ########################################
 
 }

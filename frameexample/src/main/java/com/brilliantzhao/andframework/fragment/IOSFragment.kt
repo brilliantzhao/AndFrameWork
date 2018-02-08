@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.blankj.utilcode.util.LogUtils
 import com.brilliantzhao.andframework.adapter.FuckGoodsAdapter
 import com.brilliantzhao.andframework.component.FuckGoodsModule
 import com.brilliantzhao.andframework.contract.FuckGoodsContract
@@ -78,6 +79,18 @@ class IOSFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsContrac
     }
 
     override fun initData() {
+    }
+
+    override fun onLazyLoadOnce() {
+        LogUtils.i(className + "-->onLazyLoadOnce")
+    }
+
+    override fun onVisibleToUser() {
+        LogUtils.i(className + "-->onVisibleToUser")
+    }
+
+    override fun onInvisibleToUser() {
+        LogUtils.i(className + "-->onInvisibleToUser")
     }
 
     override fun setData(results: List<FuckGoods>) {

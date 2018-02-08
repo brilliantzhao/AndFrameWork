@@ -8,7 +8,12 @@ import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
 import com.brilliantzhao.baselibrary.R
+import com.umeng.analytics.MobclickAgent
 import kotlinx.android.synthetic.main.activity_base.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
+
 
 /**
  * description:
@@ -21,6 +26,8 @@ abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity(), V
     //##########################  custom variables start ##########################################
 
     lateinit var mBinding: B
+
+    val className = this.javaClass.simpleName
 
     //##########################   custom variables end  ##########################################
 
@@ -38,10 +45,13 @@ abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity(), V
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         base_toolbar.setNavigationOnClickListener { finish() }
+        //=== EventBus
+        EventBus.getDefault().register(this)
         //===
         initView()
         initEvent()
         initData()
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -146,6 +156,12 @@ abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity(), V
 
     //################################################################# toolBar的处理 end
 
+    // eventbus
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(event: MessageEvent) {
+        /* Do something */
+    }
+
     //######################    custom metohds end   ##############################################
 
     //######################  override third methods start ########################################
@@ -154,6 +170,24 @@ abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity(), V
         when (v.id) {
 
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // UMeng Session统计
+        MobclickAgent.onResume(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // UMeng Session统计
+        MobclickAgent.onPause(this)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // EventBus
+        EventBus.getDefault().unregister(this)
     }
 
     //######################   override third methods end  ########################################

@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.blankj.utilcode.util.LogUtils
 import com.brilliantzhao.andframework.R
 import com.brilliantzhao.andframework.activity.ImageActivity
 import com.brilliantzhao.andframework.adapter.GirlAdapter
@@ -81,6 +82,18 @@ class GirlFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsContra
     }
 
     override fun initData() {
+    }
+
+    override fun onLazyLoadOnce() {
+        LogUtils.i(className + "-->onLazyLoadOnce")
+    }
+
+    override fun onVisibleToUser() {
+        LogUtils.i(className + "-->onVisibleToUser")
+    }
+
+    override fun onInvisibleToUser() {
+        LogUtils.i(className + "-->onInvisibleToUser")
     }
 
     override fun setData(results: List<FuckGoods>) {

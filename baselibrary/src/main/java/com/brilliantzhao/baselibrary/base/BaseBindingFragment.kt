@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.umeng.analytics.MobclickAgent
 
 /**
  * description:
@@ -20,6 +21,11 @@ abstract class BaseBingingFragment<B : ViewDataBinding> : Fragment(), View.OnCli
     //##########################  custom variables start ##########################################
 
     lateinit var mBinding: B
+
+    val className = this.javaClass.simpleName
+
+    //=== 懒加载实现
+    protected var mIsLoadedData = false
 
     //##########################   custom variables end  ##########################################
 
@@ -84,9 +90,27 @@ abstract class BaseBingingFragment<B : ViewDataBinding> : Fragment(), View.OnCli
      */
     override fun toLoginActBySessionError() {}
 
+    /**
+     *
+     */
     override fun getContext(): Context {
         return activity
     }
+
+    /**
+     * 懒加载一次。如果只想在对用户可见时才加载数据，并且只加载一次数据，在子类中重写该方法
+     */
+    abstract fun onLazyLoadOnce()
+
+    /**
+     * 对用户可见时触发该方法。如果只想在对用户可见时才加载数据，在子类中重写该方法
+     */
+    abstract fun onVisibleToUser()
+
+    /**
+     * 对用户不可见时触发该方法
+     */
+    abstract fun onInvisibleToUser()
 
     //######################  override custom metohds end  ########################################
 
@@ -99,6 +123,25 @@ abstract class BaseBingingFragment<B : ViewDataBinding> : Fragment(), View.OnCli
         return ContextCompat.getColor(context, colorId)
     }
 
+    /**
+     * 处理对用户是否可见
+     *
+     * @param isVisibleToUser
+     */
+    private fun handleOnVisibilityChangedToUser(isVisibleToUser: Boolean) {
+        if (isVisibleToUser) {
+            // 对用户可见
+            if (!mIsLoadedData) {
+                mIsLoadedData = true
+                onLazyLoadOnce()
+            }
+            onVisibleToUser()
+        } else {
+            // 对用户不可见
+            onInvisibleToUser()
+        }
+    }
+
     //######################    custom metohds end   ##############################################
 
     //######################  override third methods start ########################################
@@ -107,6 +150,31 @@ abstract class BaseBingingFragment<B : ViewDataBinding> : Fragment(), View.OnCli
         when (v.id) {
 
         }
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isResumed) {
+            handleOnVisibilityChangedToUser(isVisibleToUser)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (userVisibleHint) {
+            handleOnVisibilityChangedToUser(true)
+        }
+        // UMeng Session统计
+        MobclickAgent.onPageStart(className)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (userVisibleHint) {
+            handleOnVisibilityChangedToUser(false)
+        }
+        // UMeng Session统计
+        MobclickAgent.onPageEnd(className)
     }
 
     //######################   override third methods end  ########################################
