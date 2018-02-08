@@ -25,6 +25,15 @@ android {
         }
     }
 
+    dataBinding {
+        enabled true
+    }
+
+}
+
+// 解决Kotlin和DataBinding冲突
+kapt {
+    generateStubs = true
 }
 
 dependencies {
@@ -38,6 +47,11 @@ dependencies {
     androidTestImplementation dependencies.espressoCore
     //################## 引入第三方jar包
     //################## git上第三方库
+    //=== kotlin
+    compile dependencies.kotlinStdlib
+    compile dependencies.kotlinReflect
+    //=== databinding
+    kapt dependencies.databinding
     //################## 引用第三方工程
     implementation project(':baselibrary')
 }

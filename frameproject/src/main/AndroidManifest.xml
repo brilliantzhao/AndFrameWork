@@ -12,6 +12,7 @@
         android:xlargeScreens="true" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="${app_icon}"
@@ -21,7 +22,7 @@
         android:theme="@style/AppTheme"
         tools:replace="android:label">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
