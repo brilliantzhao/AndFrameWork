@@ -112,5 +112,9 @@ ext {
             // databinding complier的版本也就是Project下的gradle版本是一样的，当然了可以不一样,为了方便管理实际工作中是这样配置的
             databinding              : "com.android.databinding:compiler:$gradle_version",
 
+            //=== practicalrecyclerview (https://github.com/BrillantZhao/PracticalRecyclerView)
+            // 基于MaterialDesign内置了上拉下拉，以及各种错误页面，支持header和footer,方便个性化定制
+            practicalrecyclerview    : "zlc.season:practicalrecyclerview:1.1.6",
+
     ]
 }

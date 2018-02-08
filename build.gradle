@@ -25,6 +25,9 @@ buildscript {
         //=== 添加apt插件
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
 
+        // AndResGuard 资源混淆工具 (https://github.com/shwenzhang/AndResGuard)
+        classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.2.11'
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
