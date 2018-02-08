@@ -14,7 +14,7 @@ android快速开发框架，组件化的MVP架构，使用最新的技术，包�
 
 ### 本工程结构如下：
     
-<img src="https://github.com/BrillantZhao/AndFrameWork/master/img/frame_architecture.png">
+<img src="https://github.com/BrillantZhao/AndFrameWork/raw/master/img/frame_architecture.png">
 
 ## 项目模式
 
