@@ -2,23 +2,19 @@
 android快速开发框架，组件化的MVP架构，使用最新的技术，包括 Kotlin+Retrofit2+okhttp3+RxJava+Dagger2,
 页面跳转使用deeplinkdispatch路由，代码简洁，结构清晰，同时预置了常用的第三方库，方便快速上手
 
-备注：
-    1. 已集成了UMeng,用来做统计;
-    2. 已集成stetho，方便使用Chrome调试(推荐，甩开各种抓包工具几条街);
-    3. 已集成AndResGuard，用来做资源混淆，同时可有效减小 apk 1M左右大小;
-    4. 已添加代码混淆;
-    5. 通过gradle.properties中添加配置来满足个性化需求;
-    6. 使用hawk配合sharedPreference满足大多数场景的数据存储;
-    7. 项目的刷新根据不同需求，分别使用swipRefreshLayout,RecycleView,practicalrecyclerview;
-    8. 代码中添加了大量注释，方便理解和使用，使新手也能快速上手。
+### 备注：
+- 已集成了UMeng,用来做统计;
+- 已集成stetho，方便使用Chrome调试(推荐，甩开各种抓包工具几条街);
+- 已集成AndResGuard，用来做资源混淆，同时可有效减小 apk 1M左右大小;
+- 已添加代码混淆;
+- 通过gradle.properties中添加配置来满足个性化需求;
+- 使用hawk配合sharedPreference满足大多数场景的数据存储;
+- 项目的刷新根据不同需求，分别使用swipRefreshLayout,RecycleView,practicalrecyclerview;
+- 代码中添加了大量注释，方便理解和使用，使新手也能快速上手。
 
-本工程结构如下：
-    * baselibrary       ：基础依赖库，提供了各种基类方便继承和调用
-    * frameexample       ：示例工程，方便理解框架,可单独打包体验
-    * frameproject       ：组件化工程主工程，为一个空壳，方便快速上手
-    * baselibrary       ：
-    * baselibrary       ：
-    * baselibrary       ：
+### 本工程结构如下：
+    
+<img src="https://github.com/BrillantZhao/AndFrameWork/master/img/frame_architecture.png">
 
 ## 项目模式
 
@@ -128,10 +124,6 @@ android快速开发框架，组件化的MVP架构，使用最新的技术，包�
             // 基于MaterialDesign内置了上拉下拉，以及各种错误页面，支持header和footer,方便个性化定制
             practicalrecyclerview    : "zlc.season:practicalrecyclerview:1.1.6",
 
-## Kotlin
-
-  让你的代码量大大减少，函数式编程让你爽到飞上天！如果你想学习Kotlin，本项目应该会给你不少帮助。
-
 ## MVP 
   通过契约类Contract管理View Model Presenter接口。
 
@@ -141,16 +133,20 @@ android快速开发框架，组件化的MVP架构，使用最新的技术，包�
 
   主要流程如下： 用户与View交互，View得知用户需要加载数据，告知Presenter，Presenter则告知Model，Model拿到数据
   反交于Prsenter，Presenter将数据交给View进行展示。
+  
+## Kotlin
+
+  让你的代码量大大减少，函数式编程让你爽到飞上天！同时避免大部分的NPE错误，也不需要使用ButterKnife,直接使用id
+  如果你想学习Kotlin，本项目应该会给你不少帮助。
 
 ## Dagger2
 
-    安卓应用在初始化对象的时候经常需要处理各种依赖关系。比如说网络访问中使用Retrofit，Gson，本地存储中使用
-    shared preference。无一例外，我们都都需要在使用它们的地方进行实例对象构建，而且其中还可能存在着各种各样的
-    继承依赖关系。
-    依赖注入（Dependency Injection，简称DI）是用于削减计算机程序的耦合问题的一个法则。对象在被创建的时候，
-    由一个调控系统内所有对象的外界实体将其所依赖的对象的引用传递给它。也可以说，依赖被注入到对象中。
-    Dagger2 正是一个依赖注入框架，使用代码自动生成创建依赖关系需要的代码。减少很多公式化代码，更容易测试，
-    降低耦合，创建可复用可互换的模块。
+安卓应用在初始化对象的时候经常需要处理各种依赖关系。比如说网络访问中使用Retrofit，Gson，本地存储中使用
+shared preference。无一例外，我们都都需要在使用它们的地方进行实例对象构建，而且其中还可能存在着各种各样的
+继承依赖关系。
+依赖注入（Dependency Injection，简称DI）是用于削减计算机程序的耦合问题的一个法则。对象在被创建的时候，
+由一个调控系统内所有对象的外界实体将其所依赖的对象的引用传递给它。也可以说，依赖被注入到对象中。
+降低耦合，创建可复用可互换的模块。
 
     注解 	    用法
     @Module 	Modules类里面的方法专门提供依赖，所以我们定义一个类，用@Module注解，这样Dagger在构造类的实例的
@@ -182,7 +178,7 @@ android快速开发框架，组件化的MVP架构，使用最新的技术，包�
     
     依赖于 : RandomModule(提供RandomView) 
     
-## Rxjava + Retrofit + okhttp3
+## Rxjava + Retrofit2 + okhttp3
 
   主要用于网络访问。
   
@@ -190,8 +186,8 @@ android快速开发框架，组件化的MVP架构，使用最新的技术，包�
 
   基于路由进行页面转发。
   
-   **GankClientUri** 定义一些路由规则、URI等
-   **GankRouter** 统一由此进行路由操作
+   **xxxClientUri** 定义一些路由规则、URI等
+   **Router**       统一由此进行路由操作
 
 ## GSON
 
@@ -207,13 +203,13 @@ android快速开发框架，组件化的MVP架构，使用最新的技术，包�
   
 ## 更多功能将会继续开发和完善
 
-  若您对此项目有一些自己的想法 , 欢迎来提Pull Request.同时欢迎star和fork
+  若您对此项目有一些自己的想法 , 欢迎来提Pull Request. 同时欢迎star和fork
 
 ## 关于我
 
   若您对该项目有疑问,请联系我:
-  QQ  : 137148873
-  Mail: 137148873@qq.com
+QQ  : 137148873
+Mail: 137148873@qq.com
 
 ## License
 
