@@ -16,7 +16,7 @@ android快速开发框架，组件化的MVP架构，使用最新的技术，包�
     
 ![image](https://github.com/BrillantZhao/AndFrameWork/blob/master/img/frame_architecture.png)
     
-## 项目模式
+## 项目用到的github开源库
 
             //=== android support
             appcompatV7              : "com.android.support:appcompat-v7:26.1.0",
