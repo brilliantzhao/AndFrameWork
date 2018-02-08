@@ -297,4 +297,7 @@ dependencies {
     kapt dependencies.deeplinkdispatchProcessor
     //################## 引用第三方工程
     implementation project(':baselibrary')
+    implementation project(':tab1stlibrary')
+    implementation project(':tab2edlibrary')
+    implementation project(':tab3rdlibrary')
 }

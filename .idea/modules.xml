@@ -8,6 +8,9 @@
       <module fileurl="file://$PROJECT_DIR$/baselibrary/baselibrary.iml" filepath="$PROJECT_DIR$/baselibrary/baselibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/frameexample/frameexample.iml" filepath="$PROJECT_DIR$/frameexample/frameexample.iml" />
       <module fileurl="file://$PROJECT_DIR$/frameproject/frameproject.iml" filepath="$PROJECT_DIR$/frameproject/frameproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tab1stlibrary/tab1stlibrary.iml" filepath="$PROJECT_DIR$/tab1stlibrary/tab1stlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tab2edlibrary/tab2edlibrary.iml" filepath="$PROJECT_DIR$/tab2edlibrary/tab2edlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tab3rdlibrary/tab3rdlibrary.iml" filepath="$PROJECT_DIR$/tab3rdlibrary/tab3rdlibrary.iml" />
     </modules>
   </component>
 </project>

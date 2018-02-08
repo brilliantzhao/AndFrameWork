@@ -1,0 +1,42 @@
+apply plugin: 'com.android.library'
+//===
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions' // 快捷的findviewByid操作
+apply plugin: 'kotlin-kapt' // 让kotlin与databinding合谐并存
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    def dependencies = rootProject.ext.dependencies
+    //################## 系统级
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation dependencies.appcompatV7
+    implementation dependencies.constraintLayout
+    testImplementation dependencies.junit
+    androidTestImplementation dependencies.runner
+    androidTestImplementation dependencies.espressoCore
+    //################## 引入第三方jar包
+    //################## git上第三方库
+    //################## 引用第三方工程
+}
