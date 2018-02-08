@@ -31,7 +31,7 @@ abstract class BaseBingingFragment<B : ViewDataBinding> : Fragment(), View.OnCli
 
     //###################### override custom metohds start ########################################
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //===
         mBinding = createDataBinding(inflater, container, savedInstanceState)
         //===
@@ -94,7 +94,7 @@ abstract class BaseBingingFragment<B : ViewDataBinding> : Fragment(), View.OnCli
      *
      */
     override fun getContext(): Context {
-        return activity
+        return activity as Context
     }
 
     /**

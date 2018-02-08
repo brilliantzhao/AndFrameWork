@@ -107,6 +107,7 @@ dependencies {
     compile dependencies.okhttpLoggingInterceptor
     //=== glide
     compile dependencies.glide
+    kapt dependencies.glideCompiler
     //=== dagger
     compile dependencies.dagger
     kapt dependencies.daggerCompiler

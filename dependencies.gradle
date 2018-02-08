@@ -74,8 +74,9 @@ ext {
             //=== picasso (https://github.com/square/picasso)
             picasso                  : "com.squareup.picasso:picasso:2.5.2",
 
-            //=== glide ()
-            glide                    : "com.github.bumptech.glide:glide:3.7.0",
+            //=== glide (https://github.com/bumptech/glide)
+            glide                    : "com.github.bumptech.glide:glide:4.6.1",
+            glideCompiler            : "com.github.bumptech.glide:compiler:4.6.1",
 
             //=== hawk (https://github.com/orhanobut/hawk)
             hawk                     : "com.orhanobut:hawk:2.0.1",
@@ -90,17 +91,14 @@ ext {
             stethoOkhttp3            : "com.facebook.stetho:stetho-okhttp3:1.5.0",
             stethoJsRhino            : "com.facebook.stetho:stetho-js-rhino:1.5.0",
 
-            //=== SuperTextView (https://github.com/lygttpod/SuperTextView) 满足日常大部分布局样式
-            superTextView            : "com.github.lygttpod:SuperTextView:2.1.5",
+            //=== SuperTextView 满足日常大部分布局样式 (https://github.com/lygttpod/SuperTextView)
+            superTextView            : "com.github.lygttpod:SuperTextView:2.1.6",
 
             //=== eventbus (https://github.com/greenrobot/EventBus)
             eventbus                 : "org.greenrobot:eventbus:3.1.1",
 
             //=== gson (https://github.com/google/gson)
             gson                     : "com.google.code.gson:gson:2.8.2",
-
-            //=== fastjson  ()
-            fastjson                 : "com.alibaba:fastjson:1.1.55.android",
 
             //=== Luban 图片压缩工具，仿微信朋友圈压缩策略 (https://github.com/Curzibn/Luban)
             Luban                    : "top.zibin:Luban:1.1.3",
