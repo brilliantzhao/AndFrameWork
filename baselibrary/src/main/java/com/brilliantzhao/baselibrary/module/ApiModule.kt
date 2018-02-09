@@ -46,7 +46,7 @@ class ApiModule {
                     .build()
 
     @Provides
-    fun provideBaseUrl() = HttpUrl.parse(getRequestHead())
+    fun provideBaseUrl(context: Context) = HttpUrl.parse(getRequestHead(context))
 
     @Provides
     fun provideOkhttp(context: Context, interceptor: HttpLoggingInterceptor): OkHttpClient {
@@ -71,11 +71,11 @@ class ApiModule {
     }
 
     @Provides
-    fun provideInterceptor(): HttpLoggingInterceptor {
+    fun provideInterceptor(context: Context): HttpLoggingInterceptor {
         val interceptor = HttpLoggingInterceptor { msg ->
             LogUtils.d(msg)
         }
-        if (getAppIsLogShowLog()) {
+        if (getAppIsLogShowLog(context)) {
             interceptor.level = HttpLoggingInterceptor.Level.BODY
         } else {
             interceptor.level = HttpLoggingInterceptor.Level.NONE

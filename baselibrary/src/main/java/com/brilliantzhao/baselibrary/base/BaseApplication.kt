@@ -35,7 +35,7 @@ open class BaseApplication : Application() {
         val packageName = applicationInfo.packageName
         val curPorcessName = getCurrentProcessName(this)
         if (packageName == curPorcessName) {
-            initUtilCode()
+            initUtilCode(applicationContext)
             initUMeng()
             //=== init Hawk
             Hawk.init(this).build()
@@ -85,14 +85,14 @@ open class BaseApplication : Application() {
     /**
      * blankj 的工具类初始化
      */
-    fun initUtilCode() {
+    fun initUtilCode(context: Context) {
         //=== init AndroidUtilCode
         // init it in the function of onCreate in ur Application
         com.blankj.utilcode.util.Utils.init(this)
         //===
         val config = LogUtils.getConfig()
-                .setLogSwitch(getAppIsLogShowLog())// 设置log总开关，包括输出到控制台和文件，默认开
-                .setConsoleSwitch(getAppIsLogShowLog())// 设置是否输出到控制台开关，默认开
+                .setLogSwitch(getAppIsLogShowLog(context))// 设置log总开关，包括输出到控制台和文件，默认开
+                .setConsoleSwitch(getAppIsLogShowLog(context))// 设置是否输出到控制台开关，默认开
                 .setGlobalTag(null)// 设置log全局标签，默认为空
                 // 当全局标签不为空时，我们输出的log全部为该tag，
                 // 为空时，如果传入的tag为空那就显示类名，否则显示tag

@@ -114,5 +114,15 @@ ext {
             // 基于MaterialDesign内置了上拉下拉，以及各种错误页面，支持header和footer,方便个性化定制
             practicalrecyclerview    : "zlc.season:practicalrecyclerview:1.1.6",
 
+            //=== umeng (https://mobile.umeng.com/apps)
+            umengCommon              : "com.umeng.sdk:common:latest.integration",
+            umengAnalytics           : "com.umeng.sdk:analytics:latest.integration",
+
+            //=== tinker 腾讯热修复框架，推荐 (https://github.com/Tencent/tinker)
+            // Tinker is a hot-fix solution library for Android, it supports dex, library and
+            // resources update without reinstall apk.
+            tinkerLib                : "com.tencent.tinker:tinker-android-lib:1.9.1",
+            tinkerAnno               : "com.tencent.tinker:tinker-android-anno:1.9.1",
+
     ]
 }

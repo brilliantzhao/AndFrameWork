@@ -7,7 +7,7 @@ import com.brilliantzhao.baselibrary.base.BaseApplication
  * Date: 2018/2/2 10:28
  * User: BrilliantZhao
  */
-class App : BaseApplication() {
+class SampleApplication : BaseApplication() {
 
     //##########################  custom variables start ##########################################
 
@@ -29,7 +29,7 @@ class App : BaseApplication() {
     //######################      custom metohds start     ########################################
 
     companion object {
-        lateinit var instance: App
+        lateinit var instance: SampleApplication
     }
 
     //######################    custom metohds end   ##############################################

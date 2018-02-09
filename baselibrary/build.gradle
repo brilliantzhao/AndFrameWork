@@ -80,7 +80,6 @@ dependencies {
      Android 3.x系统都是平板专用系统，但是3.x系统失败了。所以使用v13的包没有任何价值。
      v7版本适用于任何版本的开发，保证了兼容性，所以在使用的时候一定要采用，即 com.android.support:appcompat-v7
      */
-
     def dependencies = rootProject.ext.dependencies
     //################## 系统级
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -89,28 +88,28 @@ dependencies {
     testImplementation dependencies.junit
     androidTestImplementation dependencies.runner
     androidTestImplementation dependencies.espressoCore
-    compile dependencies.design
-    compile dependencies.recyclerview
-    compile dependencies.cardviewV7
+    api dependencies.design
+    api dependencies.recyclerview
+    api dependencies.cardviewV7
     //################## 引入第三方jar包
     //################## git上第三方库
     //=== RX
-    compile dependencies.rxJava
-    compile dependencies.rxAndroid
+    api dependencies.rxJava
+    api dependencies.rxAndroid
     //=== gson
-    compile dependencies.gson
+    api dependencies.gson
     //=== retrofit
-    compile dependencies.retrofit
-    compile dependencies.retrofitRxjavaAdapter
-    compile dependencies.retrofitGsonConverter
+    api dependencies.retrofit
+    api dependencies.retrofitRxjavaAdapter
+    api dependencies.retrofitGsonConverter
     //=== okhttp3
-    compile dependencies.okhttp3
-    compile dependencies.okhttpLoggingInterceptor
+    api dependencies.okhttp3
+    api dependencies.okhttpLoggingInterceptor
     //=== glide
-    compile dependencies.glide
+    api dependencies.glide
     kapt dependencies.glideCompiler
     //=== dagger
-    compile dependencies.dagger
+    api dependencies.dagger
     kapt dependencies.daggerCompiler
     //=== javaxAnnotation
     // provided代表编译时需要的依赖，Dagger的编译器生成依赖关系的代码，并在编译时添加到IDE 的class path中，
@@ -119,31 +118,31 @@ dependencies {
     //=== kotlin
     // Kotlin 1.2的标准库与新引入的Java 9模块系统兼容，该系统禁止拆分包(多个.jar文件在同一包中声明类)的。
     // 在Kotlin 1.2中，kotlin-stdlib-jdk7和kotlin-stdlib-jdk8工件取代了旧的kotlin-stdlib-jre7和kotlin-stdlib-jre8
-    compile dependencies.kotlinStdlib
-    compile dependencies.kotlinReflect
+    api dependencies.kotlinStdlib
+    api dependencies.kotlinReflect
     //=== deeplinkdispatch
-    compile dependencies.deeplinkdispatch
+    api dependencies.deeplinkdispatch
     kapt dependencies.deeplinkdispatchProcessor
     //=== ByeBurger
-    compile dependencies.ByeBurger
+    api dependencies.ByeBurger
     //=== 让kotlin与databinding合谐并存
     kapt dependencies.databinding
     //=== hawk
-    compile dependencies.hawk
+    api dependencies.hawk
     //=== AndroidUtilCode
-    compile dependencies.utilcode
+    api dependencies.utilcode
     //=== SuperTextView
-    compile dependencies.superTextView
+    api dependencies.superTextView
     //=== stetho
-    compile dependencies.stetho
-    compile dependencies.stethoOkhttp3
-    compile dependencies.stethoJsRhino
+    api dependencies.stetho
+    api dependencies.stethoOkhttp3
+    api dependencies.stethoJsRhino
     //=== eventbus
-    compile dependencies.eventbus
+    api dependencies.eventbus
     //=== rxpermissions
-    compile dependencies.rxpermissions
+    api dependencies.rxpermissions
     //=== umeng
-    compile 'com.umeng.sdk:common:latest.integration'
-    compile 'com.umeng.sdk:analytics:latest.integration'
+    api dependencies.umengCommon
+    api dependencies.umengAnalytics
     //################## 引用第三方工程
 }

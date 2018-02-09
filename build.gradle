@@ -7,6 +7,7 @@ buildscript {
 
     ext.kotlin_version = '1.2.21'
     ext.gradle_version = '3.0.1'
+    ext.tinker_version = '1.9.1'
 
     repositories {
         google()
@@ -27,6 +28,9 @@ buildscript {
 
         // AndResGuard 资源混淆工具 (https://github.com/shwenzhang/AndResGuard)
         classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.2.11'
+
+        //=== tinker step1 TinkerPatch 插件
+        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:$tinker_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

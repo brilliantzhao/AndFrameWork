@@ -6,7 +6,6 @@ import android.content.Context
 import android.os.Environment
 import android.os.Process
 import com.brilliantzhao.baselibrary.R
-import com.brilliantzhao.baselibrary.base.BaseApplication
 import java.io.File
 
 /**
@@ -20,8 +19,8 @@ import java.io.File
  *
  * @return
  */
-fun getAppIsOnlineVersion(): Boolean {
-    return "TRUE" == BaseApplication.instance.getResources().getString(R.string.APP_IS_ONLINE_VERSION)
+fun getAppIsOnlineVersion(context: Context): Boolean {
+    return "TRUE" == context.getResources().getString(R.string.APP_IS_ONLINE_VERSION)
 }
 
 /**
@@ -29,8 +28,8 @@ fun getAppIsOnlineVersion(): Boolean {
  *
  * @return
  */
-fun getAppIsLogShowLog(): Boolean {
-    return "TRUE" == BaseApplication.instance.getResources().getString(R.string.APP_IS_SHOW_LOG)
+fun getAppIsLogShowLog(context: Context): Boolean {
+    return "TRUE" == context.getResources().getString(R.string.APP_IS_SHOW_LOG)
 }
 
 /**
@@ -38,8 +37,8 @@ fun getAppIsLogShowLog(): Boolean {
  *
  * @return
  */
-fun getAppUrlEnvironment(): String {
-    return BaseApplication.instance.getResources().getString(R.string.APP_URL_ENVIRONMENT)
+fun getAppUrlEnvironment(context: Context): String {
+    return context.getResources().getString(R.string.APP_URL_ENVIRONMENT)
 }
 
 /**

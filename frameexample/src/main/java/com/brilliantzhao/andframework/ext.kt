@@ -7,4 +7,4 @@ import android.content.Context
  * Date: 2018/2/2 10:28
  * User: BrilliantZhao
  */
-fun Context.getMainComponent() = App.instance.apiComponent
+fun Context.getMainComponent() = SampleApplicationLike.instance.apiComponent

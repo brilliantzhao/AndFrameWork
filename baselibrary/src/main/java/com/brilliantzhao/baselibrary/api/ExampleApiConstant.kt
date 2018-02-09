@@ -1,5 +1,6 @@
 package com.brilliantzhao.baselibrary.api
 
+import android.content.Context
 import com.brilliantzhao.baselibrary.constant.APP_URL_ENVIRONMENT_RELEASE
 import com.brilliantzhao.baselibrary.constant.APP_URL_ENVIRONMENT_SIT
 import com.brilliantzhao.baselibrary.constant.APP_URL_ENVIRONMENT_UAT
@@ -17,16 +18,14 @@ private val REQUEST_HEAD_UAT = "http://gank.io/api"
 
 private val REQUEST_HEAD_RELEASE = "http://gank.io/api"
 
-private val APP_URL_ENVIRONMENT = getAppUrlEnvironment()
-
 /**
  * 根据当前的模式获取对应的请求头部
  */
-fun getRequestHead(): String {
+fun getRequestHead(context: Context): String {
     // 默认为release环境
     var rootHttp = REQUEST_HEAD_RELEASE + "/"
 
-    when (APP_URL_ENVIRONMENT) {
+    when (getAppUrlEnvironment(context)) {
         APP_URL_ENVIRONMENT_SIT -> {
             rootHttp = REQUEST_HEAD_SIT + "/"
         }

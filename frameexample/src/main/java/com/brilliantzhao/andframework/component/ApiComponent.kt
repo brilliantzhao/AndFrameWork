@@ -1,6 +1,6 @@
 package com.brilliantzhao.andframework.component
 
-import com.brilliantzhao.andframework.App
+import com.brilliantzhao.andframework.SampleApplicationLike
 import com.brilliantzhao.baselibrary.module.ApiModule
 import dagger.Component
 import javax.inject.Singleton
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @Component(modules = arrayOf(ApiModule::class))
 interface ApiComponent {
 
-    fun inject(app: App)
+    fun inject(app: SampleApplicationLike)
 
     fun plus(module: FuckGoodsModule): FuckGoodsComponent
 

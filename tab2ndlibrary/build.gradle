@@ -48,8 +48,8 @@ dependencies {
     //################## 引入第三方jar包
     //################## git上第三方库
     //=== kotlin
-    compile dependencies.kotlinStdlib
-    compile dependencies.kotlinReflect
+    api dependencies.kotlinStdlib
+    api dependencies.kotlinReflect
     //=== databinding
     kapt dependencies.databinding
     //################## 引用第三方工程

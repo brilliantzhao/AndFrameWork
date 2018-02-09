@@ -10,6 +10,7 @@ android快速开发框架，组件化的MVP架构，使用最新的技术，包�
 - 通过gradle.properties中添加配置来满足个性化需求;
 - 使用hawk配合sharedPreference满足大多数场景的数据存储;
 - 项目的刷新根据不同需求，分别使用swipRefreshLayout,RecycleView,practicalrecyclerview;
+- 热修复使用的是Tinker,配合AndResGuard使用，很方便;
 - 代码中添加了大量注释，方便理解和使用，使新手也能快速上手。
 
 ### 本工程结构如下：

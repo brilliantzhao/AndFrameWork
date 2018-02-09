@@ -285,15 +285,15 @@ dependencies {
     //################## 引入第三方jar包
     //################## git上第三方库
     //=== dagger
-    compile dependencies.dagger
+    api dependencies.dagger
     kapt dependencies.daggerCompiler
     //=== kotlin
-    compile dependencies.kotlinStdlib
-    compile dependencies.kotlinReflect
+    api dependencies.kotlinStdlib
+    api dependencies.kotlinReflect
     //=== databinding
     kapt dependencies.databinding
     //=== deeplinkdispatch
-    compile dependencies.deeplinkdispatch
+    api dependencies.deeplinkdispatch
     kapt dependencies.deeplinkdispatchProcessor
     //################## 引用第三方工程
     implementation project(':baselibrary')
