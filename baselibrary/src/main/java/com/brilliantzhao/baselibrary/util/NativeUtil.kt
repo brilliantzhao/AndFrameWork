@@ -3,9 +3,11 @@ package com.brilliantzhao.baselibrary.util
 import android.app.ActivityManager
 import android.app.Application
 import android.content.Context
+import android.os.Environment
 import android.os.Process
 import com.brilliantzhao.baselibrary.R
 import com.brilliantzhao.baselibrary.base.BaseApplication
+import java.io.File
 
 /**
  * description: 自定义本地工具类
@@ -29,6 +31,15 @@ fun getAppIsOnlineVersion(): Boolean {
  */
 fun getAppIsLogShowLog(): Boolean {
     return "TRUE" == BaseApplication.instance.getResources().getString(R.string.APP_IS_SHOW_LOG)
+}
+
+/**
+ * 获取app的url环境，在gradle.properties中配置
+ *
+ * @return
+ */
+fun getAppUrlEnvironment(): String {
+    return BaseApplication.instance.getResources().getString(R.string.APP_URL_ENVIRONMENT)
 }
 
 /**
@@ -66,4 +77,29 @@ fun getCurrentProcessName(application: Application): String? {
         }
     }
     return null
+}
+
+/**
+ * SD卡是否可用.
+ */
+fun sdCardIsAvailable(): Boolean {
+    if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
+        val sd = File(Environment.getExternalStorageDirectory().path)
+        return sd.canWrite()
+    } else {
+        return false
+    }
+}
+
+/**
+ * 得到SD卡根目录.
+ */
+fun getRootPath(): File? {
+    var path: File? = null
+    if (sdCardIsAvailable()) {
+        path = Environment.getExternalStorageDirectory() // 取得sdcard文件路径
+    } else {
+        path = Environment.getDataDirectory()
+    }
+    return path
 }

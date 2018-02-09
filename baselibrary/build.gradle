@@ -24,6 +24,7 @@ android {
         versionName "1.0"
 
         // gradle.properties中配置项
+        resValue("string", 'APP_URL_ENVIRONMENT', APP_URL_ENVIRONMENT)
         resValue("string", 'APP_IS_SHOW_LOG', APP_IS_SHOW_LOG)
         resValue("string", 'APP_IS_ONLINE_VERSION', APP_IS_ONLINE_VERSION)
 

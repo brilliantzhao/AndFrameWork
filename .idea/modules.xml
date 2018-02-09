@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndFrameWork.iml" filepath="$PROJECT_DIR$/AndFrameWork.iml" />
-      <module fileurl="file://C:\Users\BrilliantZhao\Documents\AndroidWorkSpace\AndFrameWork\frameexample\app.iml" filepath="C:\Users\BrilliantZhao\Documents\AndroidWorkSpace\AndFrameWork\frameexample\app.iml" />
       <module fileurl="file://C:\Users\BrilliantZhao\Documents\AndroidWorkSpace\AndFrameWork\app\app.iml" filepath="C:\Users\BrilliantZhao\Documents\AndroidWorkSpace\AndFrameWork\app\app.iml" />
+      <module fileurl="file://C:\Users\BrilliantZhao\Documents\AndroidWorkSpace\AndFrameWork\frameexample\app.iml" filepath="C:\Users\BrilliantZhao\Documents\AndroidWorkSpace\AndFrameWork\frameexample\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baselibrary/baselibrary.iml" filepath="$PROJECT_DIR$/baselibrary/baselibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/frameexample/frameexample.iml" filepath="$PROJECT_DIR$/frameexample/frameexample.iml" />
       <module fileurl="file://$PROJECT_DIR$/frameproject/frameproject.iml" filepath="$PROJECT_DIR$/frameproject/frameproject.iml" />
