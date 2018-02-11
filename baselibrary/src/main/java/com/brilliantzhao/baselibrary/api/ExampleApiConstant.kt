@@ -22,6 +22,7 @@ private val REQUEST_HEAD_RELEASE = "http://gank.io/api"
  * 根据当前的模式获取对应的请求头部
  */
 fun getRequestHead(context: Context): String {
+
     // 默认为release环境
     var rootHttp = REQUEST_HEAD_RELEASE + "/"
 

@@ -26,7 +26,7 @@ interface ExampleApi {
     fun getiOSData(@Path("page") page: Int): Observable<JsonResult<List<FuckGoods>>>
 
     /**
-     * iOS所有数据
+     * 福利所有数据
      */
     @GET("data/福利/10/{page}")
     fun getGirlData(@Path("page") page: Int): Observable<JsonResult<List<FuckGoods>>>

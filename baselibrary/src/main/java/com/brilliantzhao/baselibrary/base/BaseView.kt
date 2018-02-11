@@ -3,7 +3,9 @@ package com.brilliantzhao.baselibrary.base
 import android.content.Context
 
 /**
- * Created by tianweiping on 2017/12/15.
+ * description:
+ * Date: 2018/2/2 10:28
+ * User: BrilliantZhao
  */
 interface BaseView {
 
@@ -60,17 +62,5 @@ interface BaseView {
      * @return 上下文对象
      */
     fun getContext(): Context
-
-    /**
-     * 管理 网络请求生命周期的 key
-     *
-     * @return key
-     */
-    fun getNetKey(): String
-
-    /**
-     * 因为token相关错误需要跳转到登录页面
-     */
-    fun toLoginActBySessionError()
 
 }

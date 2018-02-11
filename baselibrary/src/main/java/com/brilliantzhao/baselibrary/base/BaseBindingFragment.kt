@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.umeng.analytics.MobclickAgent
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 /**
  * description:
@@ -77,20 +79,6 @@ abstract class BaseBingingFragment<B : ViewDataBinding> : Fragment(), View.OnCli
     }
 
     /**
-     * 管理 网络请求生命周期的 key
-     *
-     * @return key
-     */
-    override fun getNetKey(): String {
-        return javaClass.simpleName
-    }
-
-    /**
-     * 因为token相关错误需要跳转到登录页面
-     */
-    override fun toLoginActBySessionError() {}
-
-    /**
      *
      */
     override fun getContext(): Context {
@@ -142,13 +130,18 @@ abstract class BaseBingingFragment<B : ViewDataBinding> : Fragment(), View.OnCli
         }
     }
 
+    // eventbus
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(event: MessageEvent) {
+        /* Do something */
+    }
+
     //######################    custom metohds end   ##############################################
 
     //######################  override third methods start ########################################
 
     override fun onClick(v: View) {
         when (v.id) {
-
         }
     }
 

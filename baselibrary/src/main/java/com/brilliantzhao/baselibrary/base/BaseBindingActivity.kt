@@ -118,20 +118,6 @@ abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity(), V
         return this
     }
 
-    /**
-     * 管理 网络请求生命周期的 key
-     *
-     * @return key
-     */
-    override fun getNetKey(): String {
-        return javaClass.simpleName
-    }
-
-    /**
-     * 因为token相关错误需要跳转到登录页面
-     */
-    override fun toLoginActBySessionError() {}
-
     //######################  override custom metohds end  ########################################
 
     //######################      custom metohds start     ########################################
@@ -168,7 +154,6 @@ abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity(), V
 
     override fun onClick(v: View) {
         when (v.id) {
-
         }
     }
 
