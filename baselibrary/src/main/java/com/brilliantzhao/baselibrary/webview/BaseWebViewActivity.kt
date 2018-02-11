@@ -1,4 +1,4 @@
-package com.brilliantzhao.baselibrary.base
+package com.brilliantzhao.baselibrary.webview
 
 import android.content.Intent
 import android.databinding.DataBindingUtil
@@ -13,6 +13,7 @@ import android.webkit.WebViewClient
 import android.widget.LinearLayout
 import com.blankj.utilcode.util.LogUtils
 import com.brilliantzhao.baselibrary.R
+import com.brilliantzhao.baselibrary.base.BaseBindingActivity
 import com.brilliantzhao.baselibrary.databinding.ActivityBaseWebviewBinding
 import com.brilliantzhao.baselibrary.widget.WebLayout
 import com.just.agentweb.AgentWeb
@@ -21,7 +22,7 @@ import kotlinx.android.synthetic.main.activity_base_webview.*
 import java.net.URLDecoder
 
 /**
- * description:
+ * description: 基于AgentWeb封装的webview公共类
  * Date: 2018/2/7 14:00
  * User: BrilliantZhao
  */

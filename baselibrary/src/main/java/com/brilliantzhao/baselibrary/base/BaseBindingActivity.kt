@@ -10,6 +10,7 @@ import android.view.View
 import com.brilliantzhao.baselibrary.R
 import com.umeng.analytics.MobclickAgent
 import kotlinx.android.synthetic.main.activity_base.*
+import kotlinx.android.synthetic.main.layout_toolbar_style0.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode

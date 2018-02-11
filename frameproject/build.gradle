@@ -93,11 +93,19 @@ android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
 
     signingConfigs {
-        signingConfig {
-            keyAlias 'frameexample'
-            keyPassword '12345!#%@$'
-            storeFile file('../andframework.jks')
-            storePassword '12345!#%@$'
+        release {
+            try {
+                keyAlias 'frameexample'
+                keyPassword '12345!#%@$'
+                storeFile file('../keystore/andframework.jks')
+                storePassword '12345!#%@$'
+            } catch (ex) {
+                throw new InvalidUserDataException(ex.toString())
+            }
+        }
+
+        debug {
+            storeFile file("../keystore/debug.keystore")
         }
     }
 
@@ -130,7 +138,6 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
-        signingConfig signingConfigs.signingConfig
     }
 
     buildTypes {
@@ -140,7 +147,7 @@ android {
             shrinkResources false // 是否去除无效的资源文件
             // 自己声明的bean类和webview与JS交互的方法需要避免被混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.signingConfig
+            signingConfig signingConfigs.release
             // mainfest中参数配置
             manifestPlaceholders = [
                     app_name      : "@string/app_name",
@@ -158,7 +165,7 @@ android {
             shrinkResources false // 是否去除无效的资源文件
             // 自己声明的bean类和webview与JS交互的方法需要避免被混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.signingConfig
+            signingConfig signingConfigs.debug
             // mainfest中参数配置
             manifestPlaceholders = [
                     app_name      : "@string/app_name_dev",

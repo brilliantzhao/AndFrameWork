@@ -3,7 +3,7 @@ package com.brilliantzhao.baselibrary.router
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import com.brilliantzhao.baselibrary.base.BaseWebViewActivity
+import com.brilliantzhao.baselibrary.webview.BaseWebViewActivity
 
 /**
  * description:

@@ -7,7 +7,13 @@
         android:supportsRtl="true">
 
         <activity
-            android:name=".base.BaseWebViewActivity"
+            android:name=".webview.BaseWebViewActivity"
+            android:configChanges="orientation|screenSize"
+            android:hardwareAccelerated="true"
+            android:launchMode="singleTop"></activity>
+
+        <activity
+            android:name=".webview.CommonWebViewActivity"
             android:configChanges="orientation|screenSize"
             android:hardwareAccelerated="true"
             android:launchMode="singleTop"></activity>

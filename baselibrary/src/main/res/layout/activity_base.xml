@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/base_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/base_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_50"
-        android:background="@color/themColor"
-        android:elevation="@dimen/dimen_04"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <!-- toolBar 样式 -->
+    <include layout="@layout/layout_toolbar_style0"></include>
 
+    <!-- -->
     <FrameLayout
         android:id="@+id/base_content_layout"
         android:layout_width="match_parent"
