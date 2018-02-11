@@ -144,5 +144,7 @@ dependencies {
     //=== umeng
     api dependencies.umengCommon
     api dependencies.umengAnalytics
+    //=== Pgyer
+    api dependencies.pgyersdk
     //################## 引用第三方工程
 }

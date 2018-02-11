@@ -11,6 +11,8 @@ android快速开发框架，组件化的MVP架构，使用最新的技术，包�
 - 使用hawk配合sharedPreference满足大多数场景的数据存储;
 - 项目的刷新根据不同需求，分别使用swipRefreshLayout,RecycleView,practicalrecyclerview;
 - 热修复使用的是Tinker,配合AndResGuard使用，很方便;
+- 持续集成使用蒲公英(打包成功之后通过通过插件上传到蒲公英，然后打开应用就可以看到升级弹框了)，没有使用jenkins的
+  原因是项目大了之后太慢了，并且也没有方便到哪去;
 - 代码中添加了大量注释，方便理解和使用，使新手也能快速上手。
 
 ### 本工程结构如下：
@@ -215,7 +217,7 @@ Mail: 137148873@qq.com
 ## License
 
 > ```
-> Copyright 2016 Season.Zlc
+> Copyright 2016 BrillantZhao(https://github.com/BrillantZhao/AndFrameWork)
 >
 > Licensed under the Apache License, Version 2.0 (the "License");
 > you may not use this file except in compliance with the License.

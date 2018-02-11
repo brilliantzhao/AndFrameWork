@@ -20,6 +20,8 @@ import com.brilliantzhao.baselibrary.base.BaseBindingActivity
 import com.brilliantzhao.baselibrary.examplebean.FuckGoods
 import com.brilliantzhao.baselibrary.router.ExampleClientUri
 import com.brilliantzhao.baselibrary.router.Router
+import com.brilliantzhao.baselibrary.util.dealPGYTestUpdate
+import com.pgyersdk.update.PgyUpdateManager
 import kotlinx.android.synthetic.main.activity_main.*
 import java.net.URLEncoder
 import java.util.*
@@ -127,6 +129,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(), RandomContract.
         }
     }
 
+
     //######################    custom metohds end   ##############################################
 
     //######################  override third methods start ########################################
@@ -158,6 +161,19 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(), RandomContract.
     override fun onRandom(goods: FuckGoods) {
         val url = URLEncoder.encode(goods.url)
         Router.router(this, ExampleClientUri.DETAIL + url)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // 处理蒲公英的持续集成
+        dealPGYTestUpdate(this, getResources().getString(R.string.APP_VERCODE_FRAMEEXAMPLE_DEV),
+                getResources().getString(R.string.APP_VERSION_FRAMEEXAMPLE_DEV))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // 蒲公英解除注册
+        PgyUpdateManager.unregister()
     }
 
     //######################   override third methods end  ########################################
