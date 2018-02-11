@@ -161,4 +161,5 @@ fun dealPGYTestUpdate(activity: Activity, appVerCode: String, appVerName: String
             override fun onNoUpdateAvailable() {}
         })
     }
+
 }

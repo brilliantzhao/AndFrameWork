@@ -3,16 +3,11 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/activity_detail"
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".activity.DetailActivity">
-
-        <com.brilliantzhao.baselibrary.widget.ProgressWebView
-            android:id="@+id/webView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        tools:context=".base.BaseWebViewActivity">
 
     </LinearLayout>
 

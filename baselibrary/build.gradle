@@ -146,5 +146,11 @@ dependencies {
     api dependencies.umengAnalytics
     //=== Pgyer
     api dependencies.pgyersdk
+    //=== agentweb
+    api dependencies.agentweb
+    api dependencies.agentwebDownload
+    api dependencies.agentwebFilechooser
+    //=== lcodecorex
+    compile 'com.lcodecorex:tkrefreshlayout:1.0.7'
     //################## 引用第三方工程
 }

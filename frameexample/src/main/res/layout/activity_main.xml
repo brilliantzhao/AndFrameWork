@@ -52,7 +52,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="首页"
+                        android:text="Android"
                         android:textColor="@color/base_item_12151C"
                         android:textSize="11sp" />
 
@@ -77,7 +77,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="帮助中心"
+                        android:text="iOS"
                         android:textColor="@color/base_item_8792A5"
                         android:textSize="11sp" />
 
@@ -102,7 +102,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="我的"
+                        android:text="福利"
                         android:textColor="@color/base_item_8792A5"
                         android:textSize="11sp" />
 

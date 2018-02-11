@@ -71,7 +71,7 @@ class IOSFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsContrac
 
         mAdapter.setOnItemClickListener { pos ->
             val url = URLEncoder.encode(mList[pos].url)
-            Router.router(context, ExampleClientUri.DETAIL + url)
+            Router.startBaseWebViewActivity(context, url)
         }
     }
 

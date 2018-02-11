@@ -6,6 +6,12 @@
         android:allowBackup="true"
         android:supportsRtl="true">
 
+        <activity
+            android:name=".base.BaseWebViewActivity"
+            android:configChanges="orientation|screenSize"
+            android:hardwareAccelerated="true"
+            android:launchMode="singleTop"></activity>
+
     </application>
 
     <!-- ########################################################## permission start  -->
@@ -25,7 +31,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 获取MAC地址-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 读写sdcard，storage等等 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 允许程序录制音频 -->
-    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <!-- ########################################################## permission end  -->
 

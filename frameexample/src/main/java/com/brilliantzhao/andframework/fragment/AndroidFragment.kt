@@ -1,5 +1,6 @@
 package com.brilliantzhao.andframework.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -14,7 +15,6 @@ import com.brilliantzhao.andframework.getMainComponent
 import com.brilliantzhao.andframework.presenter.FuckGoodsPresenter
 import com.brilliantzhao.baselibrary.base.BaseBingingFragment
 import com.brilliantzhao.baselibrary.examplebean.FuckGoods
-import com.brilliantzhao.baselibrary.router.ExampleClientUri
 import com.brilliantzhao.baselibrary.router.Router
 import java.net.URLEncoder
 import java.util.*
@@ -72,7 +72,7 @@ class AndroidFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsCon
 
         mAdapter.setOnItemClickListener { pos ->
             val url = URLEncoder.encode(mList[pos].url)
-            Router.router(context, ExampleClientUri.DETAIL + url)
+            Router.startBaseWebViewActivity(context, url)
         }
     }
 
@@ -117,6 +117,7 @@ class AndroidFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsCon
 
     //######################  override third methods start ########################################
 
+    @SuppressLint("MissingSuperCall")
     override fun onDestroy() {
         super.onDestroy()
         mPresenter.unSubscribe()

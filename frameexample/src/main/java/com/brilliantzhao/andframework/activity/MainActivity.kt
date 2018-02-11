@@ -18,7 +18,6 @@ import com.brilliantzhao.andframework.getMainComponent
 import com.brilliantzhao.andframework.presenter.RandomPresenter
 import com.brilliantzhao.baselibrary.base.BaseBindingActivity
 import com.brilliantzhao.baselibrary.examplebean.FuckGoods
-import com.brilliantzhao.baselibrary.router.ExampleClientUri
 import com.brilliantzhao.baselibrary.router.Router
 import com.brilliantzhao.baselibrary.util.dealPGYTestUpdate
 import com.pgyersdk.update.PgyUpdateManager
@@ -160,7 +159,8 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(), RandomContract.
 
     override fun onRandom(goods: FuckGoods) {
         val url = URLEncoder.encode(goods.url)
-        Router.router(this, ExampleClientUri.DETAIL + url)
+        Router.startBaseWebViewActivity(getContext(), url)
+
     }
 
     override fun onResume() {

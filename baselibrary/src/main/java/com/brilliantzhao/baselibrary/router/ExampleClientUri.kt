@@ -7,12 +7,4 @@ package com.brilliantzhao.baselibrary.router
  */
 object ExampleClientUri {
 
-    //关于Activity
-    const val ABOUT = "gank://androidwing.net/about/"
-
-    //详情页
-    const val DETAIL_PARAM_URL = "url"
-
-    const val DETAIL = "gank://androidwing.net/detail/"
-
 }

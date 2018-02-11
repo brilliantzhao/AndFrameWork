@@ -124,7 +124,7 @@ ext {
             tinkerLib                : "com.tencent.tinker:tinker-android-lib:1.9.1",
             tinkerAnno               : "com.tencent.tinker:tinker-android-anno:1.9.1",
 
-            //=== AgentWeb a powerful library based on Android WebView (https://github.com/Justson/AgentWeb)
+            //=== AgentWeb,a powerful library based on Android WebView (https://github.com/Justson/AgentWeb)
             agentweb                 : "com.just.agentweb:agentweb:4.0.0-alpha-3",
             agentwebDownload         : "com.just.agentweb:download:4.0.0-alpha-3",
             agentwebFilechooser      : "com.just.agentweb:filechooser:4.0.0-alpha-3",

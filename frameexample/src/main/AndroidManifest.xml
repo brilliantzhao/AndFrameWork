@@ -32,8 +32,6 @@
 
         <activity android:name=".activity.ImageActivity" />
 
-        <activity android:name=".activity.DetailActivity" />
-
         <activity
             android:name=".deeplink.DeepLinkActivity"
             android:theme="@android:style/Theme.NoDisplay">
