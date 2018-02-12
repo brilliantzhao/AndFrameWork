@@ -147,15 +147,18 @@ fun dealPGYTestUpdate(activity: Activity, appVerCode: String, appVerName: String
             override fun onUpdateAvailable(result: String) {
                 // 将新版本信息封装到AppBean中
                 val appBean = UpdateManagerListener.getAppBeanFromString(result)
-                AlertDialog.Builder(activity)
-                        .setTitle("测试版本有更新!")
-                        .setMessage("环境：" + getAppUrlEnvironment(activity) + " - " + appVerCode + " - "
-                                + appVerName + " - " + getAppMetaData(activity, "UMENG_CHANNEL") + "\n\n"
-                                + "修复问题：\n" + appBean.releaseNote + "\n\n"
-                                + "该升级只会出现在测试版本上，线上版本不受影响;\n该版本号为测试版本号，与线上版本号不保持同步;\n测试版本和正式版本升级有冲突，如要测试正式版本升级，请联系开发人员。")
-                        .setNegativeButton("取消") { dialog, which -> dialog.dismiss() }
-                        .setPositiveButton("立即升级") { dialog, which -> UpdateManagerListener.startDownloadTask(activity, appBean.downloadURL) }
-                        .show()
+                // 只有升级应用包的环境为当前环境的时候，才进行升级
+                if (appBean.releaseNote.contains(getAppUrlEnvironment(activity))) {
+                    AlertDialog.Builder(activity)
+                            .setTitle("测试版本有更新!")
+                            .setMessage("环境：" + getAppUrlEnvironment(activity) + " - " + appVerCode + " - "
+                                    + appVerName + " - " + getAppMetaData(activity, "UMENG_CHANNEL") + "\n\n"
+                                    + "修复问题：\n" + appBean.releaseNote + "\n\n"
+                                    + "该升级只会出现在测试版本上，线上版本不受影响;\n该版本号为测试版本号，与线上版本号不保持同步;\n测试版本和正式版本升级有冲突，如要测试正式版本升级，请联系开发人员。")
+                            .setNegativeButton("取消") { dialog, which -> dialog.dismiss() }
+                            .setPositiveButton("立即升级") { dialog, which -> UpdateManagerListener.startDownloadTask(activity, appBean.downloadURL) }
+                            .show()
+                }
             }
 
             override fun onNoUpdateAvailable() {}

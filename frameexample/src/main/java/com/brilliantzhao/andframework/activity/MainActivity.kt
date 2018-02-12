@@ -166,8 +166,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(), RandomContract.
     override fun onResume() {
         super.onResume()
         // 处理蒲公英的持续集成
-        dealPGYTestUpdate(this, getResources().getString(R.string.APP_VERCODE_FRAMEEXAMPLE_DEV),
-                getResources().getString(R.string.APP_VERSION_FRAMEEXAMPLE_DEV))
+        dealPGYTestUpdate(this, getResources().getString(R.string.APP_VERCODE_FRAMEEXAMPLE_DEV), getResources().getString(R.string.APP_VERSION_FRAMEEXAMPLE_DEV))
     }
 
     override fun onDestroy() {

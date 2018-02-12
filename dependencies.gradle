@@ -1,11 +1,15 @@
 ext {
 
     android = [
-            compileSdkVersion : 26,
-            minSdkVersion     : 20,
-            targetSdkVersion  : 26,
-            applicationId     : "com.brilliantzhao.frameproject",
-            applicationFrameId: "com.brilliantzhao.andframework",
+            compileSdkVersion    : 26,
+            minSdkVersion        : 20,
+            targetSdkVersion     : 26,
+            //=== frameproject
+            applicationId        : "com.brilliantzhao.frameproject",
+            //=== frameexample
+            applicationFrameId   : "com.brilliantzhao.andframework",
+            applicationFrameSitId: "com.brilliantzhao.andframeworksit",
+            applicationFrameUatId: "com.brilliantzhao.andframeworkuat",
     ]
 
     dependencies = [

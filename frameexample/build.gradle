@@ -115,7 +115,6 @@ android {
     }
 
     defaultConfig {
-        applicationId rootProject.ext.android.applicationFrameId
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
 
@@ -144,6 +143,14 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
+        if ("SIT".equals(APP_URL_ENVIRONMENT)) {
+            applicationId = rootProject.ext.android.applicationFrameSitId
+        } else if ("UAT".equals(APP_URL_ENVIRONMENT)) {
+            applicationId = rootProject.ext.android.applicationFrameUatId
+        } else if ("RELEASE".equals(APP_URL_ENVIRONMENT)) {
+            applicationId = rootProject.ext.android.applicationFrameId
+        }
+
         //##################################################################### tinker step4 start
         /**
          * buildConfig can change during patch!
@@ -169,14 +176,34 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
             // mainfest中参数配置
-            manifestPlaceholders = [
-                    app_name      : "@string/app_name",
-                    app_icon      : "@mipmap/ic_launcher",
-                    app_icon_round: "@mipmap/ic_launcher_round",
-                    // UMENT配置
-                    umeng_appkey  : "5a4d7b1fb27b0a7ea40003fc",
-                    package_name  : rootProject.ext.android.applicationFrameId
-            ]
+            if ("SIT".equals(APP_URL_ENVIRONMENT)) {
+                manifestPlaceholders = [
+                        app_name      : "@string/app_name_sit",
+                        app_icon      : "@mipmap/ic_launcher",
+                        app_icon_round: "@mipmap/ic_launcher_round",
+                        // UMENT配置
+                        umeng_appkey  : "5a4d7b1fb27b0a7ea40003fc",
+                        package_name  : rootProject.ext.android.applicationFrameId
+                ]
+            } else if ("UAT".equals(APP_URL_ENVIRONMENT)) {
+                manifestPlaceholders = [
+                        app_name      : "@string/app_name_uat",
+                        app_icon      : "@mipmap/ic_launcher",
+                        app_icon_round: "@mipmap/ic_launcher_round",
+                        // UMENT配置
+                        umeng_appkey  : "5a4d7b1fb27b0a7ea40003fc",
+                        package_name  : rootProject.ext.android.applicationFrameId
+                ]
+            } else if ("RELEASE".equals(APP_URL_ENVIRONMENT)) {
+                manifestPlaceholders = [
+                        app_name      : "@string/app_name",
+                        app_icon      : "@mipmap/ic_launcher",
+                        app_icon_round: "@mipmap/ic_launcher_round",
+                        // UMENT配置
+                        umeng_appkey  : "5a4d7b1fb27b0a7ea40003fc",
+                        package_name  : rootProject.ext.android.applicationFrameId
+                ]
+            }
         }
 
         debug {
@@ -188,14 +215,34 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
             // mainfest中参数配置
-            manifestPlaceholders = [
-                    app_name      : "@string/app_name_dev",
-                    app_icon      : "@mipmap/ic_launcher",
-                    app_icon_round: "@mipmap/ic_launcher_round",
-                    // UMENT配置
-                    umeng_appkey  : "5a4d7b768f4a9d2d71000853",
-                    package_name  : rootProject.ext.android.applicationFrameId
-            ]
+            if ("SIT".equals(APP_URL_ENVIRONMENT)) {
+                manifestPlaceholders = [
+                        app_name      : "@string/app_name_dev_sit",
+                        app_icon      : "@mipmap/ic_launcher",
+                        app_icon_round: "@mipmap/ic_launcher_round",
+                        // UMENT配置
+                        umeng_appkey  : "5a4d7b768f4a9d2d71000853",
+                        package_name  : rootProject.ext.android.applicationFrameId
+                ]
+            } else if ("UAT".equals(APP_URL_ENVIRONMENT)) {
+                manifestPlaceholders = [
+                        app_name      : "@string/app_name_dev_uat",
+                        app_icon      : "@mipmap/ic_launcher",
+                        app_icon_round: "@mipmap/ic_launcher_round",
+                        // UMENT配置
+                        umeng_appkey  : "5a4d7b768f4a9d2d71000853",
+                        package_name  : rootProject.ext.android.applicationFrameId
+                ]
+            } else if ("RELEASE".equals(APP_URL_ENVIRONMENT)) {
+                manifestPlaceholders = [
+                        app_name      : "@string/app_name_dev",
+                        app_icon      : "@mipmap/ic_launcher",
+                        app_icon_round: "@mipmap/ic_launcher_round",
+                        // UMENT配置
+                        umeng_appkey  : "5a4d7b768f4a9d2d71000853",
+                        package_name  : rootProject.ext.android.applicationFrameId
+                ]
+            }
         }
     }
 

@@ -1,6 +1,11 @@
 <resources>
 
-    <string name="app_name">AndFrameWork</string>
-    <string name="app_name_dev">AndFrameWork DEV</string>
+    <string name="app_name">And</string>
+    <string name="app_name_sit">And SIT</string>
+    <string name="app_name_uat">And UAT</string>
+
+    <string name="app_name_dev">And DEV</string>
+    <string name="app_name_dev_sit">And DEV SIT</string>
+    <string name="app_name_dev_uat">And DEV UAT</string>
 
 </resources>
