@@ -44,6 +44,20 @@ class CommonWebViewActivity : BaseBindingActivity<ActivityCommonWebviewBinding>(
         webview_url = URLDecoder.decode(intent.extras.getString(WEBVIEW_URL))
         LogUtils.i(webview_url)
 
+        /*唯品会*/ // https://m.vip.com/?source=www&jump_https=1
+        /*下载文件*/ // http://android.myapp.com/
+        /*input标签上传文件*/ // file:///android_asset/upload_file/uploadfile.html
+        /*Js上传文件*/ // file:///android_asset/upload_file/jsuploadfile.html
+        /*Js*/ // file:///android_asset/js_interaction/hello.html
+        /*优酷*/ // http://m.youku.com/video/id_XODEzMjU1MTI4.html
+        /*淘宝*/ // https://m.taobao.com/?sprefer=sypc00
+        /*豌豆荚*/ // http://www.wandoujia.com/apps
+        /*短信*/ // file:///android_asset/sms/sms.html
+        /*地图*/ // https://map.baidu.com/mobile/webapp/index/index/#index/index/foo=bar/vt=map
+        /*首屏秒开*/ // http://mc.vip.qq.com/demo/indexv3
+
+        webview_url = "https://m.vip.com/?source=www&jump_https=1"
+
         setToolBarGone()
         mFragmentManager = this.supportFragmentManager
     }
