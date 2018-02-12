@@ -6,15 +6,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionMenuTextColor">@color/colorPrimaryDark</item>
+        <item name="actionMenuTextAppearance">@style/MenuTextStyle</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:windowBackground">@color/windowBackground</item>
         <!--<item name="android:windowContentTransitions">true</item>-->
-    </style>
-
-    <style name="toolBar">
-        <item name="colorControlNormal">#ffffff</item>
-        <item name="android:homeAsUpIndicator">@mipmap/cha</item>
-        <item name="android:textSize">12sp</item>
     </style>
 
 </resources>

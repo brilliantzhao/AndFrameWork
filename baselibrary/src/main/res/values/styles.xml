@@ -1,0 +1,15 @@
+<resources>
+
+    <style name="MenuTextStyle">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="ToolBar" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="actionMenuTextColor">@color/colorPrimaryDark</item>
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="android:homeAsUpIndicator">@mipmap/cha</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+</resources>

@@ -60,6 +60,10 @@ class BaseWebViewFragment : BaseBingingFragment<FragmentBaseWebviewBinding>(), F
 
     var webview_url = ""
 
+    private var mDownloadingService: DownloadingService? = null
+
+    internal var mExtraService: AgentWebDownloader.ExtraService? = null
+
     //##########################   custom variables end  ##########################################
 
     //###################### override custom metohds start ########################################
@@ -73,7 +77,10 @@ class BaseWebViewFragment : BaseBingingFragment<FragmentBaseWebviewBinding>(), F
         webview_url = arguments?.getString(WEBVIEW_URL) ?: ""
         LogUtils.i(webview_url)
 
-        (view.findViewById(R.id.iv_back) as ImageView).setOnClickListener(mOnClickListener)
+        mTitleTextView = view.findViewById(R.id.toolbar_title) as TextView
+        mBackImageView = view.findViewById(R.id.iv_back) as ImageView
+        mLineView = view.findViewById(R.id.view_line) as View
+        mBackImageView?.setOnClickListener(mOnClickListener)
         (view.findViewById(R.id.iv_finish) as ImageView).setOnClickListener(mOnClickListener)
         (view.findViewById(R.id.iv_more) as ImageView).setOnClickListener(mOnClickListener)
     }
@@ -160,10 +167,6 @@ class BaseWebViewFragment : BaseBingingFragment<FragmentBaseWebviewBinding>(), F
         false
     }
 
-    private var mDownloadingService: DownloadingService? = null
-
-    internal var mExtraService: AgentWebDownloader.ExtraService? = null
-
     /**
      * 修改 AgentWeb  4.0.0
      */
@@ -224,7 +227,6 @@ class BaseWebViewFragment : BaseBingingFragment<FragmentBaseWebviewBinding>(), F
             if (null == throwable) { //下载成功
                 //do you work
             } else {//下载失败
-
             }
             return false // true  不会发出下载完成的通知 , 或者打开文件
         }
@@ -260,7 +262,6 @@ class BaseWebViewFragment : BaseBingingFragment<FragmentBaseWebviewBinding>(), F
             return shouldOverrideUrlLoading(view, request.url.toString() + "")
         }
 
-        //
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
             LogUtils.i("view:" + Gson().toJson(view.hitTestResult))
             LogUtils.i("mWebViewClient shouldOverrideUrlLoading:" + url)
@@ -290,12 +291,12 @@ class BaseWebViewFragment : BaseBingingFragment<FragmentBaseWebviewBinding>(), F
                 LogUtils.i("  page url:" + url + "  used time:" + (overTime - startTime!!))
             }
         }
+
         /*错误页回调该方法 ， 如果重写了该方法， 上面传入了布局将不会显示 ， 交由开发者实现，注意参数对齐。*/
         /* public void onMainFrameError(AgentWebUIController agentWebUIController, WebView view, int errorCode, String description, String failingUrl) {
             Log.i(TAG, "AgentWebFragment onMainFrameError");
             agentWebUIController.onMainFrameError(view,errorCode,description,failingUrl);
         }*/
-
         override fun onReceivedHttpError(view: WebView, request: WebResourceRequest, errorResponse: WebResourceResponse) {
             super.onReceivedHttpError(view, request, errorResponse)
             LogUtils.i("onReceivedHttpError:" + 3 + "  request:" + mGson.toJson(request) + "  errorResponse:" + mGson.toJson(errorResponse))
@@ -329,17 +330,6 @@ class BaseWebViewFragment : BaseBingingFragment<FragmentBaseWebviewBinding>(), F
         mLineView?.setVisibility(tag)
     }
 
-    private val mOnClickListener = View.OnClickListener { v ->
-        when (v.id) {
-            R.id.iv_back ->
-                if (!(mAgentWeb?.back() ?: false))
-                // true表示AgentWeb处理了该事件
-                    this@BaseWebViewFragment.getActivity()?.finish()
-            R.id.iv_finish -> this@BaseWebViewFragment.getActivity()?.finish()
-            R.id.iv_more -> showPoPup(v)
-        }
-    }
-
     /**
      * 显示更多菜单
      *
@@ -352,6 +342,17 @@ class BaseWebViewFragment : BaseBingingFragment<FragmentBaseWebviewBinding>(), F
             mPopupMenu?.setOnMenuItemClickListener(mOnMenuItemClickListener)
         }
         mPopupMenu?.show()
+    }
+
+    private val mOnClickListener = View.OnClickListener { v ->
+        when (v.id) {
+            R.id.iv_back ->
+                if (!(mAgentWeb?.back() ?: false))
+                // true表示AgentWeb处理了该事件
+                    this@BaseWebViewFragment.getActivity()?.finish()
+            R.id.iv_finish -> this@BaseWebViewFragment.getActivity()?.finish()
+            R.id.iv_more -> showPoPup(v)
+        }
     }
 
     // 菜单事件

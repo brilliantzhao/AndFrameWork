@@ -8,6 +8,8 @@
     android:titleTextColor="@android:color/white"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    app:theme="@style/ToolBar"
     app:titleTextColor="@android:color/white">
 
     <RelativeLayout
@@ -49,7 +51,7 @@
             android:layout_centerInParent="true"
             android:singleLine="true"
             android:textColor="@android:color/white"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/iv_more"
