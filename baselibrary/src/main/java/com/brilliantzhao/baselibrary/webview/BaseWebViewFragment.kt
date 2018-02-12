@@ -23,6 +23,7 @@ import android.widget.Toast
 import com.blankj.utilcode.util.LogUtils
 import com.brilliantzhao.baselibrary.R
 import com.brilliantzhao.baselibrary.base.BaseBingingFragment
+import com.brilliantzhao.baselibrary.constant.WEBVIEW_URL
 import com.brilliantzhao.baselibrary.databinding.FragmentBaseWebviewBinding
 import com.brilliantzhao.baselibrary.webview.client.MiddlewareChromeClient
 import com.brilliantzhao.baselibrary.webview.client.MiddlewareWebViewClient
@@ -30,11 +31,10 @@ import com.brilliantzhao.baselibrary.webview.common.UIController
 import com.google.gson.Gson
 import com.just.agentweb.*
 import com.just.agentweb.DownloadListener
-import kotlinx.android.synthetic.main.layout_toolbar_style2.*
 import java.util.*
 
 /**
- * description:
+ * description:基于AgentWeb封装的webview公共类,可以作为公用fragment使用
  * Date: 2018/2/7 14:17
  * User: BrilliantZhao
  */
@@ -45,15 +45,20 @@ class BaseWebViewFragment : BaseBingingFragment<FragmentBaseWebviewBinding>(), F
     private var mBackImageView: ImageView? = null
 
     private var mLineView: View? = null
-    private var mFinishImageView: ImageView? = null
+
     private var mTitleTextView: TextView? = null
+
     protected var mAgentWeb: AgentWeb? = null
-    val URL_KEY = "url_key"
-    private var mMoreImageView: ImageView? = null
+
     private var mPopupMenu: PopupMenu? = null
+
     private val mGson = Gson() //用于方便打印测试
+
     private var mMiddleWareWebClient: MiddlewareWebClientBase? = null
+
     private var mMiddleWareWebChrome: MiddlewareWebChromeBase? = null
+
+    var webview_url = ""
 
     //##########################   custom variables end  ##########################################
 
@@ -64,14 +69,16 @@ class BaseWebViewFragment : BaseBingingFragment<FragmentBaseWebviewBinding>(), F
         return FragmentBaseWebviewBinding.inflate(inflater!!, container, false)
     }
 
-    override fun initView() {
-        iv_back.setOnClickListener(mOnClickListener)
-        iv_finish.setOnClickListener(mOnClickListener)
-        iv_more.setOnClickListener(mOnClickListener)
+    override fun initView(view: View) {
+        webview_url = arguments?.getString(WEBVIEW_URL) ?: ""
+        LogUtils.i(webview_url)
+
+        (view.findViewById(R.id.iv_back) as ImageView).setOnClickListener(mOnClickListener)
+        (view.findViewById(R.id.iv_finish) as ImageView).setOnClickListener(mOnClickListener)
+        (view.findViewById(R.id.iv_more) as ImageView).setOnClickListener(mOnClickListener)
     }
 
     override fun initEvent() {
-
     }
 
     override fun initData() {
@@ -87,7 +94,6 @@ class BaseWebViewFragment : BaseBingingFragment<FragmentBaseWebviewBinding>(), F
         //AgentWeb 4.0 开始，删除该类以及删除相关的API
 //        DefaultMsgConfig.DownloadMsgConfig mDownloadMsgConfig = mAgentWeb.getDefaultMsgConfig().getDownloadMsgConfig();
         //  mDownloadMsgConfig.setCancel("放弃");  // 修改下载提示信息，这里可以语言切换
-
         //AgentWeb 没有把WebView的功能全面覆盖 ，所以某些设置 AgentWeb 没有提供 ， 请从WebView方面入手设置。
         mAgentWeb?.getWebCreator()?.webView?.overScrollMode = WebView.OVER_SCROLL_NEVER
         //mAgentWeb.getWebCreator().getWebView()  获取WebView .
@@ -139,24 +145,11 @@ class BaseWebViewFragment : BaseBingingFragment<FragmentBaseWebviewBinding>(), F
                 .interceptUnkownScheme() //拦截找不到相关页面的Scheme AgentWeb 3.0.0 加入。
                 .createAgentWeb()//创建AgentWeb。
                 .ready()//设置 WebSettings。
-                .go(getUrl()) //WebView载入该url地址的页面并显示。
+                .go(webview_url) //WebView载入该url地址的页面并显示。
     }
 
     fun getSettings(): AgentWebSettings<*> {
         return WebDefaultSettingsManager.getInstance()
-    }
-
-    /**
-     * 页面空白，请检查scheme是否加上， scheme://host:port/path?query 。
-     *
-     * @return url
-     */
-    fun getUrl(): String {
-        var target: String? = ""
-        if (TextUtils.isEmpty(arguments?.getString("URL"))) {
-            target = "http://www.baidu.com/"
-        }
-        return target!!
     }
 
     protected var mPermissionInterceptor: PermissionInterceptor = PermissionInterceptor { url, permissions, action ->
@@ -279,10 +272,10 @@ class BaseWebViewFragment : BaseBingingFragment<FragmentBaseWebviewBinding>(), F
                 return true;*/
         }
 
-        override fun onPageStarted(view: WebView, url: String, favicon: Bitmap) {
-            LogUtils.i("url:" + url + " onPageStarted  target:" + getUrl())
+        override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
+            LogUtils.i("url:" + url + " onPageStarted  target:" + webview_url)
             timer[url] = System.currentTimeMillis()
-            if (url == getUrl()) {
+            if (url == webview_url) {
                 pageNavigator(View.GONE)
             } else {
                 pageNavigator(View.VISIBLE)

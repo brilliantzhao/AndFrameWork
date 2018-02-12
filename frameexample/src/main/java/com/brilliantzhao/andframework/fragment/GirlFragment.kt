@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.blankj.utilcode.util.LogUtils
@@ -50,7 +51,7 @@ class GirlFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsContra
         return ViewRecyclerBinding.inflate(inflater!!, container, false)
     }
 
-    override fun initView() {
+    override fun initView(view: View) {
         mAdapter = GirlAdapter(mList)
         context.getMainComponent().plus(FuckGoodsModule(this)).inject(this)
         with(mBinding!!) {

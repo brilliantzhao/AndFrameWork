@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.blankj.utilcode.util.LogUtils
 import com.brilliantzhao.andframework.adapter.FuckGoodsAdapter
@@ -47,7 +48,7 @@ class AndroidFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsCon
         return ViewRecyclerBinding.inflate(inflater!!, container, false)
     }
 
-    override fun initView() {
+    override fun initView(view: View) {
         mAdapter = FuckGoodsAdapter(mList)
         context.getMainComponent().plus(FuckGoodsModule(this)).inject(this)
         with(mBinding!!) {
@@ -72,7 +73,7 @@ class AndroidFragment : BaseBingingFragment<ViewRecyclerBinding>(), FuckGoodsCon
 
         mAdapter.setOnItemClickListener { pos ->
             val url = URLEncoder.encode(mList[pos].url)
-            Router.startBaseWebViewActivity(context, url)
+            Router.startCommonWebViewActivity(context, url)
         }
     }
 

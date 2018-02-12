@@ -14,6 +14,7 @@ import android.widget.LinearLayout
 import com.blankj.utilcode.util.LogUtils
 import com.brilliantzhao.baselibrary.R
 import com.brilliantzhao.baselibrary.base.BaseBindingActivity
+import com.brilliantzhao.baselibrary.constant.WEBVIEW_URL
 import com.brilliantzhao.baselibrary.databinding.ActivityBaseWebviewBinding
 import com.brilliantzhao.baselibrary.widget.WebLayout
 import com.just.agentweb.AgentWeb
@@ -22,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_base_webview.*
 import java.net.URLDecoder
 
 /**
- * description: 基于AgentWeb封装的webview公共类
+ * description: 基于AgentWeb封装的webview公共类,可以作为公用Activity使用
  * Date: 2018/2/7 14:00
  * User: BrilliantZhao
  */
@@ -32,7 +33,7 @@ class BaseWebViewActivity : BaseBindingActivity<ActivityBaseWebviewBinding>() {
 
     protected var mAgentWeb: AgentWeb? = null
 
-    var url = ""
+    var webview_url = ""
 
     //##########################   custom variables end  ##########################################
 
@@ -47,8 +48,8 @@ class BaseWebViewActivity : BaseBindingActivity<ActivityBaseWebviewBinding>() {
     }
 
     override fun initView() {
-        url = URLDecoder.decode(intent.extras.getString("URL"))
-        LogUtils.i(url)
+        webview_url = URLDecoder.decode(intent.extras.getString(WEBVIEW_URL))
+        LogUtils.i(webview_url)
     }
 
     override fun initEvent() {
@@ -77,7 +78,7 @@ class BaseWebViewActivity : BaseBindingActivity<ActivityBaseWebviewBinding>() {
                 .interceptUnkownScheme() //拦截找不到相关页面的Scheme
                 .createAgentWeb() //
                 .ready()
-                .go(url)
+                .go(webview_url)
     }
 
     private val mWebViewClient = object : WebViewClient() {

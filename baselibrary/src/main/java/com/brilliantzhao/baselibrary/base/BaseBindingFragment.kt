@@ -36,10 +36,20 @@ abstract class BaseBingingFragment<B : ViewDataBinding> : Fragment(), View.OnCli
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //===
         mBinding = createDataBinding(inflater, container, savedInstanceState)
-        //===
-        initView()
-        initEvent()
         return mBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView(view)
+        initEvent()
+        initData()
+    }
+
+    /**
+     * 初始化view
+     */
+    override fun initView() {
     }
 
     /**

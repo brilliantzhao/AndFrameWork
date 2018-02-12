@@ -26,7 +26,7 @@ class Tab3rdFragment : BaseBingingFragment<FragmentTab3rdBinding>() {
         return FragmentTab3rdBinding.inflate(inflater!!, container, false)
     }
 
-    override fun initView() {
+    override fun initView(view: View) {
     }
 
     override fun initEvent() {

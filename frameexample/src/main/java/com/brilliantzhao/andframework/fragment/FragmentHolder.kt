@@ -2,6 +2,7 @@ package com.brilliantzhao.andframework.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.blankj.utilcode.util.LogUtils
 import com.brilliantzhao.andframework.databinding.FragmentAboutBinding
@@ -25,7 +26,7 @@ class FragmentHolder : BaseBingingFragment<FragmentAboutBinding>() {
         return FragmentAboutBinding.inflate(inflater!!, container, false)
     }
 
-    override fun initView() {
+    override fun initView(view: View) {
         val text = "Kotlin \n"
                 .plus("Dagger 2\n")
                 .plus("Rxjava\n")

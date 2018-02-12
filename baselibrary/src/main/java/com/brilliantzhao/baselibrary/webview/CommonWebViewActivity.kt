@@ -6,16 +6,19 @@ import android.os.Bundle
 import android.support.v4.app.FragmentManager
 import android.view.KeyEvent
 import android.view.View
+import com.blankj.utilcode.util.LogUtils
 import com.brilliantzhao.baselibrary.R
 import com.brilliantzhao.baselibrary.base.BaseBindingActivity
-import com.brilliantzhao.baselibrary.databinding.ActivityModelBinding
+import com.brilliantzhao.baselibrary.constant.WEBVIEW_URL
+import com.brilliantzhao.baselibrary.databinding.ActivityCommonWebviewBinding
+import java.net.URLDecoder
 
 /**
  * description:
  * Date: 2018/2/7 14:00
  * User: BrilliantZhao
  */
-class CommonWebViewActivity : BaseBindingActivity<ActivityModelBinding>() {
+class CommonWebViewActivity : BaseBindingActivity<ActivityCommonWebviewBinding>() {
 
     //##########################  custom variables start ##########################################
 
@@ -23,19 +26,25 @@ class CommonWebViewActivity : BaseBindingActivity<ActivityModelBinding>() {
 
     private var mAgentWebFragment: BaseWebViewFragment? = null
 
+    var webview_url = ""
+
     //##########################   custom variables end  ##########################################
 
     //###################### override custom metohds start ########################################
 
     override fun getContentViewId(): Int {
-        return R.layout.activity_model
+        return R.layout.activity_common_webview
     }
 
-    override fun createDataBinding(savedInstanceState: Bundle?): ActivityModelBinding {
+    override fun createDataBinding(savedInstanceState: Bundle?): ActivityCommonWebviewBinding {
         return DataBindingUtil.setContentView(this, getContentViewId())
     }
 
     override fun initView() {
+        webview_url = URLDecoder.decode(intent.extras.getString(WEBVIEW_URL))
+        LogUtils.i(webview_url)
+
+        setToolBarGone()
         mFragmentManager = this.supportFragmentManager
     }
 
@@ -43,6 +52,7 @@ class CommonWebViewActivity : BaseBindingActivity<ActivityModelBinding>() {
     }
 
     override fun initData() {
+        openFragment()
     }
 
     //######################  override custom metohds end  ########################################
@@ -55,7 +65,7 @@ class CommonWebViewActivity : BaseBindingActivity<ActivityModelBinding>() {
         mAgentWebFragment = BaseWebViewFragment.newInstance(mBundle)
         ft?.add(R.id.container_framelayout, mAgentWebFragment,
                 BaseWebViewFragment::class.java!!.getName())
-        mBundle?.putString("URL", "https://m.vip.com/?source=www&jump_https=1")
+        mBundle?.putString(WEBVIEW_URL, webview_url)
         ft?.commit()
     }
     //######################    custom metohds end   ##############################################

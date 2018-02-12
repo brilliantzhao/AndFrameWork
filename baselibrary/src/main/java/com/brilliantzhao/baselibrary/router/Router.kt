@@ -3,7 +3,9 @@ package com.brilliantzhao.baselibrary.router
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import com.brilliantzhao.baselibrary.constant.WEBVIEW_URL
 import com.brilliantzhao.baselibrary.webview.BaseWebViewActivity
+import com.brilliantzhao.baselibrary.webview.CommonWebViewActivity
 
 /**
  * description:
@@ -27,7 +29,16 @@ object Router {
      */
     fun startBaseWebViewActivity(context: Context, url: String) {
         var intent = Intent(context, BaseWebViewActivity::class.java)
-        intent.putExtra("URL", url)
+        intent.putExtra(WEBVIEW_URL, url)
+        context.startActivity(intent)
+    }
+
+    /**
+     * 启动CommonWebViewActivity
+     */
+    fun startCommonWebViewActivity(context: Context, url: String) {
+        var intent = Intent(context, CommonWebViewActivity::class.java)
+        intent.putExtra(WEBVIEW_URL, url)
         context.startActivity(intent)
     }
 

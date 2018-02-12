@@ -26,7 +26,7 @@ class Tab2ndFragment : BaseBingingFragment<FragmentTab2ndBinding>() {
         return FragmentTab2ndBinding.inflate(inflater!!, container, false)
     }
 
-    override fun initView() {
+    override fun initView(view: View) {
     }
 
     override fun initEvent() {

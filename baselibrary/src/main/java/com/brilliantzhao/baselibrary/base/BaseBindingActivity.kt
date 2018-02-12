@@ -52,7 +52,6 @@ abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity(), V
         initView()
         initEvent()
         initData()
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -63,6 +62,12 @@ abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity(), V
     }
 
     //################################################################# loading的处理 start
+
+    /**
+     * 初始化view
+     */
+    override fun initView(view: View) {
+    }
 
     /**
      * 显示一个loading

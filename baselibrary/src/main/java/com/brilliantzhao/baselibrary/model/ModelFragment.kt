@@ -26,7 +26,7 @@ class ModelFragment : BaseBingingFragment<FragmentModelBinding>() {
         return FragmentModelBinding.inflate(inflater!!, container, false)
     }
 
-    override fun initView() {
+    override fun initView(view: View) {
     }
 
     override fun initEvent() {

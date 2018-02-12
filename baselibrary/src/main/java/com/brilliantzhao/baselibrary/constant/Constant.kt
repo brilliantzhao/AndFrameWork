@@ -63,3 +63,6 @@ val DEFAULT_CRASH_FILE_PATH = (getAppPathRoot()
 val DEFAULT_CACHE_FILE_PATH = (getAppPathRoot()
         + "cache"
         + File.separator)
+
+//===
+val WEBVIEW_URL = "URL" // webview加载的url

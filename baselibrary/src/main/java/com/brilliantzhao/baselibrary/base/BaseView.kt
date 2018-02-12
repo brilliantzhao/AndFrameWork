@@ -1,6 +1,7 @@
 package com.brilliantzhao.baselibrary.base
 
 import android.content.Context
+import android.view.View
 
 /**
  * description:
@@ -10,9 +11,14 @@ import android.content.Context
 interface BaseView {
 
     /**
-     *  初始化view
+     *  初始化view，在activity中使用
      */
     fun initView()
+
+    /**
+     *  初始化view，在fragment中使用
+     */
+    fun initView(view: View)
 
     /**
      * 事件的绑定
